@@ -1,0 +1,6 @@
+export { SavedObjectsBatchResponse, SavedObjectsBulkCreateObject, SavedObjectsBulkCreateOptions, SavedObjectsBulkUpdateObject, SavedObjectsClient, SavedObjectsClientContract, SavedObjectsCreateOptions, SavedObjectsFindResponsePublic, SavedObjectsUpdateOptions, SavedObjectsBulkUpdateOptions, } from './saved_objects_client';
+export { SimpleSavedObject } from './simple_saved_object';
+export { SavedObjectsStart, SavedObjectsService } from './saved_objects_service';
+export { SavedObjectsBaseOptions, SavedObjectsFindOptions, SavedObjectsMigrationVersion, SavedObjectsImportResponse, SavedObjectsImportSuccess, SavedObjectsImportConflictError, SavedObjectsImportAmbiguousConflictError, SavedObjectsImportUnsupportedTypeError, SavedObjectsImportMissingReferencesError, SavedObjectsImportUnknownError, SavedObjectsImportError, SavedObjectsImportRetry, SavedObjectsNamespaceType, } from '../../server/types';
+export { SavedObject, SavedObjectAttribute, SavedObjectAttributes, SavedObjectAttributeSingle, SavedObjectError, SavedObjectReference, } from '../../types';
+//# sourceMappingURL=index.d.ts.map

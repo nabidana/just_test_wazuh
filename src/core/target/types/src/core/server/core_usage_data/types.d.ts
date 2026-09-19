@@ -1,0 +1,123 @@
+/**
+ * Type describing Core's usage data payload
+ * @internal
+ */
+export interface CoreUsageData {
+    config: CoreConfigUsageData;
+    services: CoreServicesUsageData;
+    environment: CoreEnvironmentUsageData;
+}
+/**
+ * Usage data from Core services
+ * @internal
+ */
+export interface CoreServicesUsageData {
+    savedObjects: {
+        indices: {
+            alias: string;
+            docsCount: number;
+            docsDeleted: number;
+            storeSizeBytes: number;
+            primaryStoreSizeBytes: number;
+        }[];
+    };
+}
+/**
+ * Usage data on this OpenSearch Dashboards node's runtime environment.
+ * @internal
+ */
+export interface CoreEnvironmentUsageData {
+    memory: {
+        heapTotalBytes: number;
+        heapUsedBytes: number;
+        /** V8 heap size limit */
+        heapSizeLimit: number;
+    };
+}
+/**
+ * Usage data on this cluster's configuration of Core features
+ * @internal
+ */
+export interface CoreConfigUsageData {
+    opensearch: {
+        sniffOnStart: boolean;
+        sniffIntervalMs?: number;
+        sniffOnConnectionFault: boolean;
+        numberOfHostsConfigured: number;
+        requestHeadersWhitelistConfigured: boolean;
+        customHeadersConfigured: boolean;
+        shardTimeoutMs: number;
+        requestTimeoutMs: number;
+        pingTimeoutMs: number;
+        logQueries: boolean;
+        ssl: {
+            verificationMode: 'none' | 'certificate' | 'full';
+            certificateAuthoritiesConfigured: boolean;
+            certificateConfigured: boolean;
+            keyConfigured: boolean;
+            keystoreConfigured: boolean;
+            truststoreConfigured: boolean;
+            alwaysPresentCertificate: boolean;
+        };
+        apiVersion: string;
+        healthCheckDelayMs: number;
+    };
+    http: {
+        basePathConfigured: boolean;
+        maxPayloadInBytes: number;
+        rewriteBasePath: boolean;
+        keepaliveTimeout: number;
+        socketTimeout: number;
+        compression: {
+            enabled: boolean;
+            referrerWhitelistConfigured: boolean;
+        };
+        xsrf: {
+            disableProtection: boolean;
+            whitelistConfigured: boolean;
+        };
+        requestId: {
+            allowFromAnyIp: boolean;
+            ipAllowlistConfigured: boolean;
+        };
+        ssl: {
+            certificateAuthoritiesConfigured: boolean;
+            certificateConfigured: boolean;
+            cipherSuites: string[];
+            keyConfigured: boolean;
+            keystoreConfigured: boolean;
+            truststoreConfigured: boolean;
+            redirectHttpFromPortConfigured: boolean;
+            supportedProtocols: string[];
+            clientAuthentication: 'none' | 'optional' | 'required';
+        };
+    };
+    logging: {
+        appendersTypesUsed: string[];
+        loggersConfiguredCount: number;
+    };
+    savedObjects: {
+        maxImportPayloadBytes: number;
+        maxImportExportSizeBytes: number;
+    };
+}
+/**
+ * Internal API for getting Core's usage data payload.
+ *
+ * @note This API should never be used to drive application logic and is only
+ * intended for telemetry purposes.
+ *
+ * @internal
+ */
+export interface CoreUsageDataStart {
+    /**
+     * Internal API for getting Core's usage data payload.
+     *
+     * @note This API should never be used to drive application logic and is only
+     * intended for telemetry purposes.
+     *
+     * @internal
+     * */
+    getCoreUsageData(): Promise<CoreUsageData>;
+}
+//# sourceMappingURL=types.d.ts.map

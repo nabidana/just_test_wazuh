@@ -1,0 +1,1 @@
+{"version":3,"file":"context.d.ts","sourceRoot":"","sources":["../../../../public/split_panel/context.tsx"],"names":[],"mappings":"AA8BA,OAAO,KAAoC,MAAM,OAAO,CAAC;AACzD,OAAO,EAAE,aAAa,EAAE,MAAM,YAAY,CAAC;AAI3C,UAAU,YAAY;IACpB,QAAQ,EAAE,GAAG,CAAC;IACd,QAAQ,EAAE,aAAa,CAAC;CACzB;AAED,wBAAgB,oBAAoB,CAAC,EAAE,QAAQ,EAAE,QAAQ,EAAE,EAAE,YAAY,qBAExE;AAED,eAAO,MAAM,eAAe;;CAM3B,CAAC"}

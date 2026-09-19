@@ -1,0 +1,343 @@
+/*
+ * Copyright OpenSearch Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import {
+  EuiInMemoryTable,
+  EuiSpacer,
+  EuiLink,
+  EuiFlyout,
+  EuiSmallButton,
+  EuiButtonIcon,
+  EuiEmptyPrompt,
+  EuiHealth,
+  EuiPanel,
+  EuiFlexGroup,
+  EuiText,
+  EuiFlexItem,
+  EuiHorizontalRule,
+  EuiToolTip,
+} from "@elastic/eui";
+import _ from "lodash";
+import React, { useEffect, useContext, useState, useMemo } from "react";
+import { SnapshotManagementService } from "../../../../services";
+import { CoreServicesContext } from "../../../../components/core_services";
+import { getToasts } from "../../helper";
+import { Toast, ModifiedStages, IndexItem } from "../../../../models/interfaces";
+import { GetIndexRecoveryResponse } from "../../../../../server/models/interfaces";
+import { BREADCRUMBS, restoreIndicesCols } from "../../../../utils/constants";
+import { ContentPanel } from "../../../../components/ContentPanel";
+import IndexList from "../IndexList";
+
+interface RestoreActivitiesPanelProps {
+  snapshotManagementService: SnapshotManagementService;
+  onOpenError: () => void;
+  sendError: (error: object) => void;
+  sendToasts: (toasts: Toast[]) => void;
+  snapshotId: string;
+  restoreStartRef: number;
+  indicesToRestore: string[];
+  useNewUX: boolean;
+}
+
+const intervalIds: ReturnType<typeof setInterval>[] = [];
+
+export const RestoreActivitiesPanel = ({
+  onOpenError,
+  sendError,
+  sendToasts,
+  snapshotManagementService,
+  snapshotId,
+  restoreStartRef,
+  indicesToRestore,
+  useNewUX,
+}: RestoreActivitiesPanelProps) => {
+  const context = useContext(CoreServicesContext);
+  const [startTime, setStartTime] = useState("");
+  const [stopTime, setStopTime] = useState("");
+  const [stage, setStage] = useState("");
+  const [indices, setIndices] = useState<IndexItem[]>([]);
+  const [flyout, setFlyout] = useState(false);
+  const [statusOk, setStatusOk] = useState(true);
+
+  const restoreCount = indicesToRestore.length;
+
+  useEffect(() => {
+    const breadCrumbs = useNewUX
+      ? [BREADCRUMBS.INDEX_SNAPSHOT_RESTORE]
+      : [BREADCRUMBS.SNAPSHOT_MANAGEMENT, BREADCRUMBS.SNAPSHOTS, BREADCRUMBS.SNAPSHOT_RESTORE];
+    context?.chrome.setBreadcrumbs(breadCrumbs);
+
+    if (statusOk && stage !== "완료 (100%)") {
+      intervalIds.push(
+        setInterval(() => {
+          getRestoreStatus();
+        }, 2000)
+      );
+
+      return () => {
+        intervalIds.forEach((id) => {
+          clearInterval(id);
+        });
+      };
+    }
+  }, [stage]);
+
+  const getRestoreStatus = async () => {
+    const percent = stage.slice(stage.indexOf("("));
+    const failedStage = `실패 ${percent}`;
+
+    if (!restoreStartRef) {
+      return;
+    }
+
+    try {
+      const res = await snapshotManagementService.getIndexRecovery();
+
+      if (res.ok) {
+        const response: GetIndexRecoveryResponse = res.response;
+
+        setRestoreStatus(response);
+      } else {
+        const toasts = getToasts("error_restore_toast", "", snapshotId, onOpenError);
+
+        res.error = res.error.concat(`, 연결을 확인하세요`);
+
+        setStage(failedStage);
+        sendError(res);
+        sendToasts(toasts);
+        intervalIds.forEach((id) => {
+          clearInterval(id);
+        });
+        return;
+      }
+    } catch (err) {
+      const toasts = getToasts("error_restore_toast", "", snapshotId, onOpenError);
+
+      setStage(failedStage);
+      setStatusOk(false);
+      sendError(err);
+      sendToasts(toasts);
+    }
+  };
+
+  const onIndexesClick = async (e: React.MouseEvent) => {
+    e.preventDefault();
+    await getRestoreStatus();
+    setFlyout(true);
+  };
+
+  const onCloseFlyout = () => {
+    setFlyout(false);
+  };
+
+  const setRestoreStatus = (response: GetIndexRecoveryResponse) => {
+    let minStartTime: number = 0;
+    let maxStopTime: number = 0;
+    let stageIndex: number = 6;
+    let doneCount: number = 0;
+    const indexes: IndexItem[] = [];
+    const stages: string[] = ["START", "INIT", "INDEX", "VERIFY_INDEX", "TRANSLOG", "FINALIZE", "DONE"];
+    const modifiedStages: ModifiedStages = {
+      START: "시작 중",
+      INIT: "초기화 중",
+      INDEX: "복사 중",
+      VERIFY_INDEX: "확인 중",
+      TRANSLOG: "트랜스로그 재생 중",
+      FINALIZE: "정리 중",
+      DONE: "완료",
+    };
+    const lastStage = stages.length - 1;
+
+    // Loop through indices in response, filter out kibana index,
+    // gather progress info then use it to create progress field values.
+    for (let item in response) {
+      const responseItem = item as keyof GetIndexRecoveryResponse;
+      if (
+        item.indexOf("kibana") < 0 &&
+        response[responseItem].shards &&
+        response[responseItem].shards[0].start_time_in_millis >= restoreStartRef
+      ) {
+        const info = response[responseItem].shards[0];
+        const stage = stages.indexOf(info.stage);
+        const time = {
+          start_time: info.start_time_in_millis,
+          stop_time: info.stop_time_in_millis ? info.stop_time_in_millis : Date.now(),
+        };
+
+        doneCount = stage === lastStage ? doneCount + 1 : doneCount;
+        stageIndex = stage < stageIndex ? stage : stageIndex;
+
+        maxStopTime = maxStopTime && maxStopTime > time.stop_time ? maxStopTime : time.stop_time;
+
+        const indexStatus: string = modifiedStages[info.stage as keyof ModifiedStages];
+
+        if (info.source.index && info.source.snapshot === snapshotId) {
+          minStartTime = minStartTime && minStartTime < time.start_time ? minStartTime : time.start_time;
+          indexes.push({ index: info.source.index, restore_status: indexStatus });
+        }
+      }
+    }
+
+    const updatedIndices: IndexItem[] = [...indexes];
+    const indicesStarted = indexes.map((index) => index.index);
+
+    for (let index of indicesToRestore) {
+      if (indicesStarted.indexOf(index) < 0) {
+        updatedIndices.push({ index, restore_status: "대기 중" });
+      }
+    }
+
+    const sortedUpdatedIndices = updatedIndices.sort((a, b) => {
+      return a.index - b.index;
+    });
+    const percent = Math.floor((doneCount / restoreCount) * 100);
+
+    setIndices(sortedUpdatedIndices);
+    setStopTime(new Date(maxStopTime).toLocaleString().replace(",", "  "));
+    setStartTime(new Date(minStartTime).toLocaleString().replace(",", "  "));
+
+    if (stages[stageIndex]) {
+      stageIndex = stageIndex === lastStage && doneCount < restoreCount ? 2 : stageIndex;
+      setStage(`${modifiedStages[stages[stageIndex] as keyof ModifiedStages]} (${percent}%)`);
+    }
+  };
+
+  const actions = useMemo(
+    () => [
+      <EuiSmallButton
+        iconType="refresh"
+        onClick={getRestoreStatus}
+        data-test-subj="refreshStatusButton"
+        isDisabled={restoreStartRef ? false : true}
+      >
+        새로고침
+      </EuiSmallButton>,
+    ],
+    []
+  );
+
+  const renderToolsRight = () => {
+    return [
+      <>
+        <EuiToolTip content="새로고침">
+          <EuiButtonIcon iconType="refresh" onClick={getRestoreStatus} aria-label="새로고침" size="s" display="base" />
+        </EuiToolTip>
+      </>,
+    ];
+  };
+
+  const currentStage = stage.slice(0, stage.indexOf(" "));
+  const color = currentStage === "완료" ? "success" : currentStage === "실패" ? "failure" : "warning";
+  const indexText = `${restoreCount}개 인덱스`;
+
+  const restoreStatus = [
+    {
+      start_time: startTime,
+      stop_time: stopTime,
+      snapshot: snapshotId,
+      status: stage,
+      indexes: indexText,
+    },
+  ];
+  const columns = [
+    {
+      field: "start_time",
+      name: "시작 시간",
+    },
+    {
+      field: "stop_time",
+      name: "완료 시간",
+    },
+    {
+      field: "snapshot",
+      name: "스냅샷 이름",
+    },
+    {
+      field: "status",
+      name: "상태",
+      render: (text: string) => <EuiHealth color={color}>{text}</EuiHealth>,
+    },
+    {
+      field: "indexes",
+      name: "복원 중인 인덱스",
+      render: (text: string) => <EuiLink onClick={onIndexesClick}>{text}</EuiLink>,
+    },
+  ];
+
+  const search = {
+    toolsRight: renderToolsRight(),
+    box: {
+      placeholder: "검색",
+      incremental: true,
+      compressed: true,
+    },
+    compressed: true,
+  };
+
+  const restoreActivityTable = () => {
+    return !useNewUX ? (
+      <ContentPanel title={title} actions={useActions}>
+        <EuiInMemoryTable
+          items={snapshotId && restoreCount ? restoreStatus : []}
+          columns={columns}
+          pagination={false}
+          message={message}
+          search={useSearch}
+        />
+      </ContentPanel>
+    ) : (
+      <EuiPanel>
+        <EuiFlexGroup gutterSize="xs" alignItems="center">
+          <EuiFlexItem>
+            <EuiText size="s">
+              <h2>{title}</h2>
+            </EuiText>
+          </EuiFlexItem>
+          <EuiFlexItem>{useActions}</EuiFlexItem>
+        </EuiFlexGroup>
+        <EuiInMemoryTable
+          items={snapshotId && restoreCount ? restoreStatus : []}
+          columns={columns}
+          pagination={false}
+          message={message}
+          search={useSearch}
+        />
+      </EuiPanel>
+    );
+  };
+
+  const oldMessage = <EuiEmptyPrompt body={<p>복원 작업이 없습니다.</p>} titleSize="s"></EuiEmptyPrompt>;
+  const newMessage = (
+    <EuiEmptyPrompt
+      body={
+        <>
+          <h1>복원 작업이 없습니다</h1> <p>복원 작업이 진행 중이면 여기에 표시됩니다.</p>
+        </>
+      }
+      titleSize="s"
+    ></EuiEmptyPrompt>
+  );
+  const message = useNewUX ? newMessage : oldMessage;
+  const title = useNewUX ? undefined : "진행 중인 복원 작업";
+  const useActions = useNewUX ? undefined : actions;
+  const useSearch = useNewUX ? search : undefined;
+
+  return (
+    <>
+      {flyout && (
+        <EuiFlyout ownFocus={false} maxWidth={600} onClose={onCloseFlyout} size="m" hideCloseButton>
+          <IndexList
+            indices={indices}
+            snapshot={snapshotId}
+            onClick={onCloseFlyout}
+            title="복원 중인 인덱스"
+            columns={restoreIndicesCols}
+          />
+        </EuiFlyout>
+      )}
+      {restoreActivityTable()}
+    </>
+  );
+};

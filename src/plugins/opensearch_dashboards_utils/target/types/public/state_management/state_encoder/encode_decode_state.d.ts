@@ -1,0 +1,5 @@
+export declare function decodeState<State>(expandedOrHashedState: string): State;
+export declare function encodeState<State>(state: State, useHash: boolean): string;
+export declare function hashedStateToExpandedState(expandedOrHashedState: string): string;
+export declare function expandedStateToHashedState(expandedOrHashedState: string): string;
+//# sourceMappingURL=encode_decode_state.d.ts.map

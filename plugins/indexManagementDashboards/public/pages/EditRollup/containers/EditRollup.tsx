@@ -1,0 +1,372 @@
+/*
+ * Copyright OpenSearch Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { ChangeEvent, Component, useContext } from "react";
+import { RouteComponentProps } from "react-router-dom";
+import moment from "moment";
+import queryString from "query-string";
+import { EuiFlexItem, EuiFlexGroup, EuiSmallButton, EuiTitle, EuiSpacer, EuiSmallButtonEmpty, EuiText } from "@elastic/eui";
+import ConfigureRollup from "../../CreateRollup/components/ConfigureRollup";
+import Schedule from "../../CreateRollup/components/Schedule";
+import { getErrorMessage } from "../../../utils/helpers";
+import { BREADCRUMBS, ROUTES } from "../../../utils/constants";
+import { Rollup } from "../../../../models/interfaces";
+import { RollupService } from "../../../services";
+import { EMPTY_ROLLUP } from "../../CreateRollup/utils/constants";
+import { CoreServicesContext } from "../../../components/core_services";
+import { delayTimeUnitToMS, msToDelayTimeUnit } from "../../CreateRollup/utils/helpers";
+import { useUpdateUrlWithDataSourceProperties } from "../../../components/MDSEnabledComponent";
+import { getUISettings } from "../../../services/Services";
+
+interface EditRollupProps extends RouteComponentProps {
+  rollupService: RollupService;
+}
+
+interface EditRollupState {
+  rollupId: string;
+  rollupIdError: string;
+  rollupSeqNo: number | null;
+  rollupPrimaryTerm: number | null;
+  submitError: string;
+  isSubmitting: boolean;
+  hasSubmitted: boolean;
+  description: string;
+  jobEnabledByDefault: boolean;
+  continuousJob: string;
+  continuousDefinition: string;
+  interval: number;
+  intervalError: string;
+  intervalTimeunit: string;
+  cronExpression: string;
+  cronTimezone: string;
+  pageSize: number;
+  delayTime: number | string;
+  delayTimeunit: string;
+  rollupJSON: any;
+  useNewUX: boolean;
+}
+
+export class EditRollup extends Component<EditRollupProps, EditRollupState> {
+  static contextType = CoreServicesContext;
+  constructor(props: EditRollupProps) {
+    super(props);
+    const uiSettings = getUISettings();
+    const useNewUX = uiSettings.get("home:useNewHomePage");
+    this.state = {
+      rollupId: "",
+      rollupIdError: "",
+      rollupSeqNo: null,
+      rollupPrimaryTerm: null,
+      submitError: "",
+      isSubmitting: false,
+      hasSubmitted: false,
+      description: "",
+      jobEnabledByDefault: false,
+      continuousJob: "no",
+      continuousDefinition: "fixed",
+      interval: 2,
+      intervalError: "",
+      intervalTimeunit: "MINUTES",
+      cronExpression: "",
+      cronTimezone: "UTC",
+      pageSize: 1000,
+      delayTime: "",
+      delayTimeunit: "MINUTES",
+      rollupJSON: EMPTY_ROLLUP,
+      useNewUX: useNewUX,
+    };
+  }
+
+  componentDidMount = async (): Promise<void> => {
+    const { id } = queryString.parse(this.props.location.search);
+    const breadCrumbs = this.state.useNewUX
+      ? [BREADCRUMBS.ROLLUPS, BREADCRUMBS.EDIT_ROLLUP]
+      : [BREADCRUMBS.INDEX_MANAGEMENT, BREADCRUMBS.ROLLUPS, BREADCRUMBS.EDIT_ROLLUP, { text: id }];
+    if (typeof id === "string" && !!id) {
+      this.context.chrome.setBreadcrumbs(breadCrumbs);
+      await this.getRollupToEdit(id);
+    } else {
+      this.context.notifications.toasts.addDanger(`잘못된 롤업 ID입니다: ${id}`);
+      this.props.history.push(ROUTES.ROLLUPS);
+    }
+  };
+
+  getRollupToEdit = async (rollupId: string): Promise<void> => {
+    try {
+      const { rollupService } = this.props;
+      const response = await rollupService.getRollup(rollupId);
+
+      if (response.ok) {
+        let newJSON = JSON.parse(this.state.rollupJSON);
+        newJSON.rollup = response.response.rollup;
+
+        this.setState({
+          rollupSeqNo: response.response._seqNo,
+          rollupPrimaryTerm: response.response._primaryTerm,
+          rollupId: response.response._id,
+          description: response.response.rollup.description,
+          jobEnabledByDefault: response.response.rollup.enabled,
+          pageSize: response.response.rollup.page_size,
+          delayTime: !response.response.rollup.delay ? "" : msToDelayTimeUnit(response.response.rollup.delay, this.state.delayTimeunit),
+          rollupJSON: newJSON,
+        });
+        if (response.response.rollup.schedule.cron == undefined) {
+          this.setState({
+            interval: response.response.rollup.schedule.interval.period,
+            intervalTimeunit: response.response.rollup.schedule.interval.unit,
+            continuousDefinition: "fixed",
+          });
+        } else {
+          this.setState({ cronExpression: response.response.rollup.schedule.cron.expression, continuousDefinition: "cron" });
+        }
+      } else {
+        this.context.notifications.toasts.addDanger(`롤업 작업을 로드할 수 없습니다: ${response.error}`);
+        this.props.history.push(ROUTES.ROLLUPS);
+      }
+    } catch (err) {
+      this.context.notifications.toasts.addDanger(getErrorMessage(err, "롤업 작업을 로드할 수 없습니다"));
+      this.props.history.push(ROUTES.ROLLUPS);
+    }
+  };
+
+  onCancel = (): void => {
+    this.props.history.push(ROUTES.ROLLUPS);
+  };
+
+  onChangeDescription = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    const description = e.target.value;
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.description = description;
+    this.setState({ description: description, rollupJSON: newJSON });
+  };
+
+  onChangeName = (e: ChangeEvent<HTMLInputElement>): void => {
+    const { hasSubmitted } = this.state;
+    const rollupId = e.target.value;
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.rollupId = rollupId;
+    if (hasSubmitted) this.setState({ rollupId, rollupIdError: rollupId ? "" : "필수 항목입니다" });
+    else this.setState({ rollupId: rollupId, rollupJSON: newJSON });
+  };
+
+  onChangeJobEnabledByDefault = (): void => {
+    const checked = this.state.jobEnabledByDefault;
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.enabled = checked;
+    this.setState({ jobEnabledByDefault: !checked, rollupJSON: newJSON });
+  };
+
+  onChangeCron = (e: ChangeEvent<HTMLTextAreaElement>): void => {
+    this.setState({ cronExpression: e.target.value });
+  };
+
+  onChangeCronTimezone = (e: ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ cronTimezone: e.target.value });
+  };
+
+  onChangeDelayTime = (e: ChangeEvent<HTMLInputElement>): void => {
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.delay = e.target.value;
+    this.setState({ delayTime: e.target.valueAsNumber, rollupJSON: newJSON });
+  };
+
+  onChangeIntervalTime = (e: ChangeEvent<HTMLInputElement>): void => {
+    this.setState({ interval: e.target.valueAsNumber });
+    if (e.target.value == "") {
+      const intervalErrorMsg = "간격 값은 필수 항목입니다.";
+      this.setState({ submitError: intervalErrorMsg, intervalError: intervalErrorMsg });
+    } else {
+      this.setState({ intervalError: "" });
+    }
+  };
+
+  onChangePage = (e: ChangeEvent<HTMLInputElement>): void => {
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.page_size = e.target.value;
+    this.setState({ pageSize: e.target.valueAsNumber, rollupJSON: newJSON });
+  };
+
+  onChangeContinuousDefinition = (e: ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ continuousDefinition: e.target.value });
+  };
+
+  onChangeContinuousJob = (optionId: string): void => {
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.continuous = optionId == "yes";
+    this.setState({ continuousJob: optionId, rollupJSON: newJSON });
+  };
+
+  //Update delay field in JSON if delay value is defined.
+  onChangeDelayTimeunit = (e: ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ delayTimeunit: e.target.value });
+  };
+
+  onChangeIntervalTimeunit = (e: ChangeEvent<HTMLSelectElement>): void => {
+    this.setState({ intervalTimeunit: e.target.value });
+  };
+
+  // convert from delayTimeunit to ms for internal processing
+  updateDelay = (): void => {
+    const { delayTime, delayTimeunit } = this.state;
+    let newJSON = this.state.rollupJSON;
+    newJSON.rollup.delay = delayTimeUnitToMS(delayTime as number, delayTimeunit).toString();
+    this.setState({ rollupJSON: newJSON });
+  };
+
+  updateSchedule = (): void => {
+    const { continuousDefinition, cronExpression, interval, intervalTimeunit, cronTimezone } = this.state;
+    let newJSON = this.state.rollupJSON;
+
+    if (continuousDefinition == "cron") {
+      newJSON.rollup.schedule.cron = { expression: `${cronExpression}`, timezone: `${cronTimezone}` };
+      delete newJSON.rollup.schedule["interval"];
+    } else {
+      newJSON.rollup.schedule.interval = {
+        start_time: moment().unix(),
+        unit: intervalTimeunit,
+        period: interval,
+      };
+      delete newJSON.rollup.schedule["cron"];
+    }
+    this.setState({ rollupJSON: newJSON });
+  };
+
+  onSubmit = async (): Promise<void> => {
+    const { rollupId, rollupJSON } = this.state;
+    this.setState({ submitError: "", isSubmitting: true, hasSubmitted: true });
+    try {
+      if (!rollupId) {
+        this.setState({ rollupIdError: "필수 항목입니다" });
+      } else {
+        //Build JSON string here
+        this.updateSchedule();
+        this.updateDelay();
+        await this.onUpdate(rollupId, rollupJSON);
+      }
+    } catch (err) {
+      this.context.notifications.toasts.addDanger("잘못된 롤업 JSON입니다");
+      console.error(err);
+    }
+
+    this.setState({ isSubmitting: false });
+  };
+
+  onUpdate = async (rollupId: string, rollup: Rollup): Promise<void> => {
+    try {
+      const { rollupService } = this.props;
+      const { rollupPrimaryTerm, rollupSeqNo } = this.state;
+      if (rollupSeqNo == null || rollupPrimaryTerm == null) {
+        this.context.notifications.toasts.addDanger("seqNo 및 primaryTerm 없이 롤업을 업데이트할 수 없습니다");
+        return;
+      }
+      const response = await rollupService.putRollup(rollup, rollupId, rollupSeqNo, rollupPrimaryTerm);
+      if (response.ok) {
+        this.context.notifications.toasts.addSuccess(`"${response.response._id}"에 대한 변경 사항이 저장되었습니다!`);
+        this.props.history.push(ROUTES.ROLLUPS);
+      } else {
+        this.context.notifications.toasts.addDanger(response.error);
+        this.setState({ submitError: response.error });
+      }
+    } catch (err) {
+      this.setState({ submitError: getErrorMessage(err, "롤업을 업데이트하는 중 문제가 발생했습니다") });
+    }
+  };
+
+  render() {
+    const {
+      rollupId,
+      rollupIdError,
+      isSubmitting,
+      description,
+      jobEnabledByDefault,
+      continuousJob,
+      continuousDefinition,
+      interval,
+      intervalError,
+      intervalTimeunit,
+      cronExpression,
+      cronTimezone,
+      pageSize,
+      delayTime,
+      delayTimeunit,
+      useNewUX,
+    } = this.state;
+
+    const getTitle = !useNewUX
+      ? () => {
+          return (
+            <>
+              <EuiText size="s">
+                <h1>롤업 작업 편집</h1>
+              </EuiText>
+              <EuiSpacer />
+            </>
+          );
+        }
+      : () => {};
+    const padding_style = useNewUX ? { padding: "0px 0px" } : { padding: "25px 50px" };
+
+    return (
+      <div style={padding_style}>
+        {getTitle()}
+        <ConfigureRollup
+          isEdit={true}
+          rollupId={rollupId}
+          rollupIdError={rollupIdError}
+          onChangeDescription={this.onChangeDescription}
+          onChangeName={this.onChangeName}
+          description={description}
+        />
+        <EuiSpacer />
+        <Schedule
+          isEdit={true}
+          rollupId={rollupId}
+          rollupIdError={rollupIdError}
+          jobEnabledByDefault={jobEnabledByDefault}
+          continuousJob={continuousJob}
+          continuousDefinition={continuousDefinition}
+          interval={interval}
+          intervalTimeunit={intervalTimeunit}
+          cronExpression={cronExpression}
+          cronTimezone={cronTimezone}
+          pageSize={pageSize}
+          intervalError={intervalError}
+          delayTime={delayTime}
+          delayTimeunit={delayTimeunit}
+          onChangeJobEnabledByDefault={this.onChangeJobEnabledByDefault}
+          onChangeCron={this.onChangeCron}
+          onChangeCronTimezone={this.onChangeCronTimezone}
+          onChangeDelayTime={this.onChangeDelayTime}
+          onChangeIntervalTime={this.onChangeIntervalTime}
+          onChangePage={this.onChangePage}
+          onChangeContinuousDefinition={this.onChangeContinuousDefinition}
+          onChangeContinuousJob={this.onChangeContinuousJob}
+          onChangeDelayTimeunit={this.onChangeDelayTimeunit}
+          onChangeIntervalTimeunit={this.onChangeIntervalTimeunit}
+        />
+
+        <EuiSpacer />
+
+        <EuiFlexGroup alignItems="center" justifyContent="flexEnd" gutterSize="s">
+          <EuiFlexItem grow={false}>
+            <EuiSmallButtonEmpty onClick={this.onCancel} data-test-subj="editRollupCancelButton">
+              취소
+            </EuiSmallButtonEmpty>
+          </EuiFlexItem>
+          <EuiFlexItem grow={false}>
+            <EuiSmallButton fill onClick={this.onSubmit} isLoading={isSubmitting} data-test-subj="editRollupSaveChangesButton">
+              변경 사항 저장
+            </EuiSmallButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </div>
+    );
+  }
+}
+
+export default function (props: EditRollupProps) {
+  useUpdateUrlWithDataSourceProperties();
+  return <EditRollup {...props} />;
+}

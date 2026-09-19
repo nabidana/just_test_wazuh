@@ -1,0 +1,143 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1920" height="1080" viewBox="0 0 1920 1080" xmlns="http://www.w3.org/2000/svg">
+
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#08111F"/>
+      <stop offset="55%" stop-color="#0B1020"/>
+      <stop offset="100%" stop-color="#111D35"/>
+    </linearGradient>
+
+    <linearGradient id="shieldGradient" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#00E5FF"/>
+      <stop offset="100%" stop-color="#1E88E5"/>
+    </linearGradient>
+
+    <radialGradient id="glow" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#00E5FF" stop-opacity="0.35"/>
+      <stop offset="100%" stop-color="#00E5FF" stop-opacity="0"/>
+    </radialGradient>
+
+    <filter id="softGlow">
+      <feGaussianBlur stdDeviation="8" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1920" height="1080" fill="url(#bg)"/>
+
+  <!-- Cyber Grid -->
+  <g opacity="0.12">
+    <path d="M0 120H1920M0 240H1920M0 360H1920M0 480H1920M0 600H1920M0 720H1920M0 840H1920M0 960H1920"
+          stroke="#4FC3F7" stroke-width="1"/>
+    <path d="M120 0V1080M240 0V1080M360 0V1080M480 0V1080M600 0V1080M720 0V1080M840 0V1080M960 0V1080M1080 0V1080M1200 0V1080M1320 0V1080M1440 0V1080M1560 0V1080M1680 0V1080M1800 0V1080"
+          stroke="#4FC3F7" stroke-width="1"/>
+  </g>
+
+  <!-- Background glow -->
+  <circle cx="1450" cy="240" r="360" fill="url(#glow)"/>
+  <circle cx="420" cy="880" r="260" fill="url(#glow)"/>
+
+  <!-- Left cyber decoration -->
+  <g opacity="0.35">
+    <path d="M0 840L240 600L420 680L690 430"
+          stroke="#00E5FF"
+          stroke-width="3"
+          fill="none"/>
+    <circle cx="240" cy="600" r="8" fill="#00E5FF"/>
+    <circle cx="420" cy="680" r="8" fill="#00E5FF"/>
+    <circle cx="690" cy="430" r="8" fill="#00E5FF"/>
+  </g>
+
+  <!-- Main Shield -->
+  <g transform="translate(1220,250)" filter="url(#softGlow)">
+    <path d="M220 40
+             L390 110
+             V280
+             C390 420 315 535 220 600
+             C125 535 50 420 50 280
+             V110
+             Z"
+          fill="url(#shieldGradient)"
+          stroke="#B7EFFF"
+          stroke-width="6"/>
+
+    <circle cx="220" cy="290" r="120"
+            fill="#0B1020"
+            stroke="#E1F5FE"
+            stroke-width="8"/>
+
+    <circle cx="220" cy="290" r="65"
+            fill="none"
+            stroke="#00E5FF"
+            stroke-width="5"
+            stroke-dasharray="16 10"/>
+
+    <path d="M165 292
+             L215 340
+             L298 235"
+          stroke="#00E5FF"
+          stroke-width="14"
+          stroke-linecap="round"
+          stroke-linejoin="round"/>
+
+    <circle cx="220" cy="115" r="12" fill="#FFFFFF"/>
+    <circle cx="120" cy="200" r="10" fill="#00E5FF"/>
+    <circle cx="320" cy="200" r="10" fill="#00E5FF"/>
+    <circle cx="220" cy="500" r="12" fill="#FFFFFF"/>
+  </g>
+
+  <!-- Product Branding -->
+  <g transform="translate(170,360)">
+    <text x="0" y="0"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="96"
+          font-weight="700"
+          fill="#FFFFFF">
+      SecuwayZero
+    </text>
+
+    <rect x="640" y="-58" width="170" height="54" rx="27"
+          fill="#101B33"
+          stroke="#00E5FF"
+          stroke-width="3"/>
+
+    <text x="683" y="-22"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="28"
+          font-weight="700"
+          fill="#00E5FF">
+      V1.0
+    </text>
+
+    <text x="0" y="80"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="28"
+          letter-spacing="4"
+          fill="#9FC9DA">
+      ZERO TRUST SECURITY PLATFORM
+    </text>
+
+    <text x="0" y="135"
+          font-family="Arial, Helvetica, sans-serif"
+          font-size="20"
+          fill="#6FAFC6">
+      통합 위협 탐지 · 분석 · 대응 플랫폼
+    </text>
+  </g>
+
+  <!-- Bottom decorative line -->
+  <g opacity="0.7">
+    <path d="M170 930H620L680 990H1200L1260 930H1740"
+          stroke="#00E5FF"
+          stroke-width="4"
+          fill="none"/>
+    <circle cx="170" cy="930" r="7" fill="#00E5FF"/>
+    <circle cx="1740" cy="930" r="7" fill="#00E5FF"/>
+  </g>
+
+</svg>

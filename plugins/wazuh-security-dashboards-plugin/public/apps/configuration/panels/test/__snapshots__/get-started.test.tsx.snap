@@ -1,0 +1,662 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Get started (landing page) renders when backend configuration is disabled 1`] = `
+<Fragment>
+  <div
+    className="panel-restrict-width"
+  >
+    <Memo()
+      config={
+        Object {
+          "multitenancy": Object {
+            "enabled": true,
+          },
+          "ui": Object {
+            "backend_configurable": false,
+          },
+        }
+      }
+      coreStart={
+        Object {
+          "http": 1,
+        }
+      }
+      dataSourcePickerReadOnly={false}
+      depsStart={Object {}}
+      params={Object {}}
+      selectedDataSource={
+        Object {
+          "id": "test",
+        }
+      }
+      setDataSource={[MockFunction]}
+    />
+    <PageHeader
+      appRightControls={
+        Array [
+          Object {
+            "href": "#/",
+            "iconSide": "right",
+            "iconType": "popout",
+            "isLoading": false,
+            "label": "Open in new window",
+            "target": "_blank",
+            "type": "button",
+          },
+        ]
+      }
+      coreStart={
+        Object {
+          "http": 1,
+        }
+      }
+      fallBackComponent={
+        <EuiPageHeader>
+          <EuiText
+            size="s"
+          >
+            <h1>
+              Get started
+            </h1>
+          </EuiText>
+          <ExternalLinkButton
+            href="#/"
+            text="Open in new window"
+          />
+        </EuiPageHeader>
+      }
+      resourceType="getStarted"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          The OpenSearch security plugin lets you define the API calls that users can make and the data they can access. The most basic configuration consists of these steps.
+        </p>
+      </EuiText>
+      <EuiSpacer
+        size="l"
+      />
+      <EuiSpacer
+        size="l"
+      />
+      <EuiSteps
+        steps={
+          Array [
+            Object {
+              "children": <React.Fragment>
+                <EuiText
+                  color="subdued"
+                  size="s"
+                >
+                  Roles are reusable collections of permissions. The default roles are a great starting point, but you might need to create custom roles that meet your exact needs.
+                   
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#create-roles"
+                  />
+                </EuiText>
+                <EuiSpacer
+                  size="m"
+                />
+                <EuiFlexGroup
+                  gutterSize="s"
+                >
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="explore-existing-roles"
+                      onClick={[Function]}
+                    >
+                      Explore existing roles
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="create-new-role"
+                      onClick={[Function]}
+                    >
+                      Create new role
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+                <EuiSpacer
+                  size="l"
+                />
+              </React.Fragment>,
+              "title": "Create roles",
+            },
+            Object {
+              "children": <React.Fragment>
+                <EuiText
+                  color="subdued"
+                  size="s"
+                >
+                  After a user successfully authenticates, the security plugin retrieves that user’s roles. You can map roles directly to users, but you can also map them to backend roles.
+                   
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#map-users-to-roles"
+                  />
+                </EuiText>
+                <EuiSpacer
+                  size="m"
+                />
+                <EuiFlexGroup
+                  gutterSize="s"
+                >
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="map-users-to-role"
+                      onClick={[Function]}
+                    >
+                      Map users to a role
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="create-internal-user"
+                      onClick={[Function]}
+                    >
+                      Create internal user
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </React.Fragment>,
+              "title": "Map users",
+            },
+          ]
+        }
+      />
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Configure audit logs
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          <FormattedMessage
+            defaultMessage="Audit logs let you track user access to your OpenSearch cluster and are useful for compliance purposes."
+            id="audit.logs.introduction"
+            values={Object {}}
+          />
+           
+          <ExternalLink
+            href="https://opensearch.org/docs/latest/security-plugin/audit-logs/"
+          />
+        </p>
+        <EuiSmallButton
+          data-test-subj="review-audit-log-configuration"
+          onClick={[Function]}
+        >
+          Review Audit Log Configuration
+        </EuiSmallButton>
+      </EuiText>
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Purge cache
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          By default, the security plugin caches authenticated users, along with their roles and permissions. This option will purge cached users, roles and permissions.
+        </p>
+        <EuiSmallButton
+          data-test-subj="purge-cache"
+          iconType="refresh"
+          onClick={[Function]}
+        >
+          Purge cache
+        </EuiSmallButton>
+      </EuiText>
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Multi-tenancy
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          By default tenancy is activated in Dashboards. Tenants in OpenSearch Dashboards are spaces for saving index patterns, visualizations, dashboards, and other OpenSearch Dashboards objects.
+        </p>
+        <EuiFlexGroup
+          gutterSize="s"
+        >
+          <EuiFlexItem
+            grow={false}
+          >
+            <EuiSmallButton
+              onClick={[Function]}
+            >
+              Manage Multi-tenancy
+            </EuiSmallButton>
+          </EuiFlexItem>
+          <EuiFlexItem
+            grow={false}
+          >
+            <EuiSmallButton
+              onClick={[Function]}
+            >
+              Configure Multi-tenancy
+            </EuiSmallButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiText>
+    </EuiPanel>
+  </div>
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;
+
+exports[`Get started (landing page) renders when backend configuration is enabled 1`] = `
+<Fragment>
+  <div
+    className="panel-restrict-width"
+  >
+    <Memo()
+      config={
+        Object {
+          "multitenancy": Object {
+            "enabled": true,
+          },
+          "ui": Object {
+            "backend_configurable": true,
+          },
+        }
+      }
+      coreStart={
+        Object {
+          "http": 1,
+        }
+      }
+      dataSourcePickerReadOnly={false}
+      depsStart={Object {}}
+      params={Object {}}
+      selectedDataSource={
+        Object {
+          "id": "test",
+        }
+      }
+      setDataSource={[MockFunction]}
+    />
+    <PageHeader
+      appRightControls={
+        Array [
+          Object {
+            "href": "#/",
+            "iconSide": "right",
+            "iconType": "popout",
+            "isLoading": false,
+            "label": "Open in new window",
+            "target": "_blank",
+            "type": "button",
+          },
+        ]
+      }
+      coreStart={
+        Object {
+          "http": 1,
+        }
+      }
+      fallBackComponent={
+        <EuiPageHeader>
+          <EuiText
+            size="s"
+          >
+            <h1>
+              Get started
+            </h1>
+          </EuiText>
+          <ExternalLinkButton
+            href="#/"
+            text="Open in new window"
+          />
+        </EuiPageHeader>
+      }
+      resourceType="getStarted"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          The OpenSearch security plugin lets you define the API calls that users can make and the data they can access. The most basic configuration consists of these steps.
+        </p>
+      </EuiText>
+      <EuiSpacer
+        size="l"
+      />
+      <div
+        className="security-steps-diagram"
+      />
+      <EuiSpacer
+        size="l"
+      />
+      <EuiSteps
+        steps={
+          Array [
+            Object {
+              "children": <React.Fragment>
+                <EuiText
+                  color="subdued"
+                  size="s"
+                >
+                  Add authentication
+                  <EuiCode>
+                    (authc)
+                  </EuiCode>
+                  and authorization
+                  <EuiCode>
+                    (authz)
+                  </EuiCode>
+                  information to
+                  <EuiCode>
+                    config/opensearch-security/config.yml
+                  </EuiCode>
+                  . The
+                  <EuiCode>
+                    authc
+                  </EuiCode>
+                   section contains the backends to check user credentials against. The 
+                  <EuiCode>
+                    authz
+                  </EuiCode>
+                  section contains any backends to fetch backend roles from. The most common example of a backend role is an LDAP group. 
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/configuration/concepts/"
+                  />
+                </EuiText>
+                <EuiSpacer
+                  size="m"
+                />
+                <EuiFlexGroup
+                  gutterSize="s"
+                  wrap={true}
+                >
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <ExternalLinkButton
+                      fill={true}
+                      href="https://opensearch.org/docs/latest/security-plugin/configuration/configuration/"
+                      text="Config.yml documentation"
+                    />
+                  </EuiFlexItem>
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="review-authentication-and-authorization"
+                      onClick={[Function]}
+                    >
+                      Review authentication and authorization
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+                <EuiSpacer
+                  size="l"
+                />
+              </React.Fragment>,
+              "title": "Add backends",
+            },
+            Object {
+              "children": <React.Fragment>
+                <EuiText
+                  color="subdued"
+                  size="s"
+                >
+                  Roles are reusable collections of permissions. The default roles are a great starting point, but you might need to create custom roles that meet your exact needs.
+                   
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#create-roles"
+                  />
+                </EuiText>
+                <EuiSpacer
+                  size="m"
+                />
+                <EuiFlexGroup
+                  gutterSize="s"
+                >
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="explore-existing-roles"
+                      onClick={[Function]}
+                    >
+                      Explore existing roles
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="create-new-role"
+                      onClick={[Function]}
+                    >
+                      Create new role
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+                <EuiSpacer
+                  size="l"
+                />
+              </React.Fragment>,
+              "title": "Create roles",
+            },
+            Object {
+              "children": <React.Fragment>
+                <EuiText
+                  color="subdued"
+                  size="s"
+                >
+                  After a user successfully authenticates, the security plugin retrieves that user’s roles. You can map roles directly to users, but you can also map them to backend roles.
+                   
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#map-users-to-roles"
+                  />
+                </EuiText>
+                <EuiSpacer
+                  size="m"
+                />
+                <EuiFlexGroup
+                  gutterSize="s"
+                >
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="map-users-to-role"
+                      onClick={[Function]}
+                    >
+                      Map users to a role
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                  <EuiFlexItem
+                    grow={false}
+                  >
+                    <EuiSmallButton
+                      data-test-subj="create-internal-user"
+                      onClick={[Function]}
+                    >
+                      Create internal user
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </React.Fragment>,
+              "title": "Map users",
+            },
+          ]
+        }
+      />
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Configure audit logs
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          <FormattedMessage
+            defaultMessage="Audit logs let you track user access to your OpenSearch cluster and are useful for compliance purposes."
+            id="audit.logs.introduction"
+            values={Object {}}
+          />
+           
+          <ExternalLink
+            href="https://opensearch.org/docs/latest/security-plugin/audit-logs/"
+          />
+        </p>
+        <EuiSmallButton
+          data-test-subj="review-audit-log-configuration"
+          onClick={[Function]}
+        >
+          Review Audit Log Configuration
+        </EuiSmallButton>
+      </EuiText>
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Purge cache
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          By default, the security plugin caches authenticated users, along with their roles and permissions. This option will purge cached users, roles and permissions.
+        </p>
+        <EuiSmallButton
+          data-test-subj="purge-cache"
+          iconType="refresh"
+          onClick={[Function]}
+        >
+          Purge cache
+        </EuiSmallButton>
+      </EuiText>
+    </EuiPanel>
+    <EuiSpacer
+      size="l"
+    />
+    <EuiPanel
+      paddingSize="l"
+    >
+      <EuiTitle
+        size="s"
+      >
+        <h3>
+          Optional: Multi-tenancy
+        </h3>
+      </EuiTitle>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        <p>
+          By default tenancy is activated in Dashboards. Tenants in OpenSearch Dashboards are spaces for saving index patterns, visualizations, dashboards, and other OpenSearch Dashboards objects.
+        </p>
+        <EuiFlexGroup
+          gutterSize="s"
+        >
+          <EuiFlexItem
+            grow={false}
+          >
+            <EuiSmallButton
+              onClick={[Function]}
+            >
+              Manage Multi-tenancy
+            </EuiSmallButton>
+          </EuiFlexItem>
+          <EuiFlexItem
+            grow={false}
+          >
+            <EuiSmallButton
+              onClick={[Function]}
+            >
+              Configure Multi-tenancy
+            </EuiSmallButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiText>
+    </EuiPanel>
+  </div>
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;

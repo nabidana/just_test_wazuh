@@ -1,0 +1,1 @@
+{"version":3,"file":"router.mock.d.ts","sourceRoot":"","sources":["../../../../../../../server/http/router/router.mock.ts"],"names":[],"mappings":";AA8BA,OAAO,EAAE,OAAO,EAAE,MAAM,UAAU,CAAC;AAEnC,oBAAY,UAAU,GAAG,IAAI,CAAC,MAAM,CAAC,OAAO,CAAC,CAAC;AAE9C,iBAAS,MAAM,CAAC,EAAE,UAAe,EAAE,GAAE;IAAE,UAAU,CAAC,EAAE,MAAM,CAAA;CAAO,GAAG,UAAU,CAW7E;AAED,eAAO,MAAM,UAAU;;CAEtB,CAAC"}

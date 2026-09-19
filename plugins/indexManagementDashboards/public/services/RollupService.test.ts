@@ -1,0 +1,79 @@
+/*
+ * Copyright OpenSearch Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import { httpClientMock } from "../../test/mocks";
+import { NODE_API } from "../../utils/constants";
+import RollupService from "./RollupService";
+import { testRollup } from "../../test/constants";
+
+const rollupService = new RollupService(httpClientMock);
+
+describe("rollupService spec", () => {
+  it("calls get rollup nodejs route when calling getRollup", async () => {
+    httpClientMock.get = jest.fn().mockResolvedValue({ data: {} });
+    const rollupId = "test";
+    await rollupService.getRollup(rollupId);
+
+    expect(httpClientMock.get).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.get).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}/${rollupId}`, expect.anything());
+  });
+
+  it("calls get rollups nodejs route when calling getRollups", async () => {
+    httpClientMock.get = jest.fn().mockResolvedValue({ data: {} });
+    const queryObject = {};
+    await rollupService.getRollups(queryObject);
+
+    expect(httpClientMock.get).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.get).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}`, { query: {} });
+  });
+
+  it("calls put rollup nodejs route when calling putRollup", async () => {
+    httpClientMock.put = jest.fn().mockResolvedValue({ data: {} });
+    const rollupId = "test_1";
+    await rollupService.putRollup(testRollup.rollup, rollupId);
+
+    expect(httpClientMock.put).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.put).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}/${rollupId}`, {
+      query: { primaryTerm: undefined, seqNo: undefined },
+      body: JSON.stringify(testRollup.rollup),
+    });
+  });
+
+  it("calls delete rollup nodejs route when calling deleteRollup", async () => {
+    httpClientMock.delete = jest.fn().mockResolvedValue({ data: {} });
+    const rollupId = "rollup_id";
+    await rollupService.deleteRollup(rollupId);
+
+    expect(httpClientMock.delete).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.delete).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}/${rollupId}`, expect.anything());
+  });
+
+  it("calls start rollup nodejs route when calling startRollup", async () => {
+    httpClientMock.post = jest.fn().mockResolvedValue({ data: {} });
+    const rollupId = "rollup_id";
+    await rollupService.startRollup(rollupId);
+
+    expect(httpClientMock.post).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.post).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}/${rollupId}/_start`, expect.anything());
+  });
+
+  it("calls stop rollup nodejs route when calling stopRollup", async () => {
+    httpClientMock.post = jest.fn().mockResolvedValue({ data: {} });
+    const rollupId = "rollup_id";
+    await rollupService.stopRollup(rollupId);
+
+    expect(httpClientMock.post).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.post).toHaveBeenCalledWith(`..${NODE_API.ROLLUPS}/${rollupId}/_stop`, expect.anything());
+  });
+
+  it("calls get mappings nodejs route when calling getMappings", async () => {
+    httpClientMock.post = jest.fn().mockResolvedValue({ data: {} });
+    const indexName = "index_1";
+    await rollupService.getMappings(indexName);
+
+    expect(httpClientMock.post).toHaveBeenCalledTimes(1);
+    expect(httpClientMock.post).toHaveBeenCalledWith(`..${NODE_API._MAPPINGS}`, { body: JSON.stringify({ index: indexName }) });
+  });
+});

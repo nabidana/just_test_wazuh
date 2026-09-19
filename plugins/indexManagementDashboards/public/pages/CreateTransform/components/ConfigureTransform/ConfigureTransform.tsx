@@ -1,0 +1,83 @@
+/*
+ * Copyright OpenSearch Contributors
+ * SPDX-License-Identifier: Apache-2.0
+ */
+
+import React, { ChangeEvent } from "react";
+import {
+  EuiSpacer,
+  EuiCompressedFormRow,
+  EuiCompressedFieldText,
+  EuiTextArea,
+  EuiText,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiPanel,
+  EuiHorizontalRule,
+  EuiTitle,
+} from "@elastic/eui";
+
+interface ConfigureTransformProps {
+  isEdit: boolean;
+  transformId: string;
+  transformIdError: string;
+  onChangeName: (value: ChangeEvent<HTMLInputElement>) => void;
+  onChangeDescription: (value: ChangeEvent<HTMLTextAreaElement>) => void;
+  description: string;
+}
+
+const ConfigureTransform = ({
+  isEdit,
+  transformId,
+  transformIdError,
+  onChangeName,
+  onChangeDescription,
+  description,
+}: ConfigureTransformProps) => (
+  <EuiPanel>
+    <EuiTitle size="s">
+      <h2>작업 이름 및 설명</h2>
+    </EuiTitle>
+    <EuiHorizontalRule margin="xs" />
+    <div>
+      <EuiCompressedFormRow
+        label={
+          <EuiText size="s">
+            <h3>이름</h3>
+          </EuiText>
+        }
+        helpText="고유하고 알기 쉬운 이름을 지정하세요."
+        isInvalid={!!transformIdError}
+        error={transformIdError}
+      >
+        <EuiCompressedFieldText
+          isInvalid={!!transformIdError}
+          placeholder="my-transformjob1"
+          value={transformId}
+          onChange={onChangeName}
+          disabled={isEdit}
+        />
+      </EuiCompressedFormRow>
+      <EuiSpacer />
+      <EuiFlexGroup gutterSize="xs">
+        <EuiFlexItem grow={false}>
+          <EuiText size="s">
+            <h3>설명</h3>
+          </EuiText>
+        </EuiFlexItem>
+        <EuiFlexItem>
+          <EuiText size="s" color="subdued">
+            <h3>
+              <i> – 선택 사항</i>
+            </h3>
+          </EuiText>
+        </EuiFlexItem>
+      </EuiFlexGroup>
+      <EuiSpacer size="xs" />
+      <EuiCompressedFormRow>
+        <EuiTextArea compressed={true} value={description} onChange={onChangeDescription} data-test-subj="description" />
+      </EuiCompressedFormRow>
+    </div>
+  </EuiPanel>
+);
+export default ConfigureTransform;

@@ -1,0 +1,91 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<IndexControls /> spec renders the component 1`] = `
+<div
+  class="euiFlexGroup euiFlexGroup--gutterSmall euiFlexGroup--alignItemsCenter euiFlexGroup--directionRow euiFlexGroup--responsive"
+  style="padding: 0px 5px;"
+>
+  <div
+    class="euiFlexItem"
+  >
+    <div
+      class="euiFormControlLayout euiFormControlLayout--fullWidth euiFormControlLayout--compressed"
+    >
+      <div
+        class="euiFormControlLayout__childrenWrapper"
+      >
+        <input
+          class="euiFieldSearch euiFieldSearch--fullWidth euiFieldSearch--compressed euiFieldSearch-isClearable"
+          placeholder="Search..."
+          type="search"
+          value="testing"
+        />
+        <div
+          class="euiFormControlLayoutIcons"
+        >
+          <span
+            class="euiFormControlLayoutCustomIcon"
+          >
+            EuiIconMock
+          </span>
+        </div>
+        <div
+          class="euiFormControlLayoutIcons euiFormControlLayoutIcons--right"
+        >
+          <button
+            aria-label="Clear input"
+            class="euiFormControlLayoutClearButton euiFormControlLayoutClearButton--small"
+            type="button"
+          >
+            EuiIconMock
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="euiFlexItem euiFlexItem--flexGrowZero"
+    style="flex-basis: 100px;"
+  >
+    <div
+      class="euiFilterGroup"
+    >
+      <div
+        class="euiPopover euiPopover--anchorDownCenter"
+      >
+        <div
+          class="euiPopover__anchor"
+        >
+          <button
+            class="euiButtonEmpty euiButtonEmpty--text euiButtonEmpty--small euiFilterButton euiFilterButton-hasNotification euiFilterButton--hasIcon"
+            type="button"
+          >
+            <span
+              class="euiButtonContent euiButtonContent--iconRight euiButtonEmpty__content"
+            >
+              EuiIconMock
+              <span
+                class="euiButtonEmpty__text euiFilterButton__text-hasNotification"
+              >
+                <span
+                  class="euiFilterButton__textShift"
+                  data-text="Types"
+                  title="Types"
+                >
+                  Types
+                </span>
+                <span
+                  aria-label="3 available filters"
+                  class="euiNotificationBadge euiNotificationBadge--medium euiNotificationBadge--subdued euiFilterButton__notification"
+                >
+                  3
+                </span>
+              </span>
+            </span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

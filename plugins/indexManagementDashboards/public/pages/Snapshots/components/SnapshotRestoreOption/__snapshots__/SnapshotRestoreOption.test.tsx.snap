@@ -1,0 +1,70 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`SnapshotRestoreOption component renders without error 1`] = `
+<div>
+  <div>
+    <div
+      class="euiFlexGroup euiFlexGroup--gutterExtraSmall euiFlexGroup--alignItemsCenter euiFlexGroup--directionRow euiFlexGroup--responsive"
+    >
+      <div
+        class="euiFlexItem euiFlexItem--flexGrowZero"
+      >
+        <div
+          class="euiText euiText--small"
+        >
+          <h3>
+            Specify restore option
+          </h3>
+        </div>
+      </div>
+    </div>
+    <div
+      class="euiSpacer euiSpacer--s"
+    />
+    <div
+      class="euiRadio euiRadio--compressed"
+    >
+      <input
+        checked=""
+        class="euiRadio__input"
+        id="restore_all_indices"
+        name="restore_option"
+        type="radio"
+        value=""
+      />
+      <div
+        class="euiRadio__circle"
+      />
+      <label
+        class="euiRadio__label"
+        for="restore_all_indices"
+      >
+        Restore all indices in snapshot
+      </label>
+    </div>
+    <div
+      class="euiSpacer euiSpacer--s"
+    />
+    <div
+      class="euiRadio euiRadio--compressed"
+    >
+      <input
+        class="euiRadio__input"
+        id="restore_specific_indices"
+        name="restore_option"
+        type="radio"
+        value=""
+      />
+      <div
+        class="euiRadio__circle"
+      />
+      <label
+        class="euiRadio__label"
+        for="restore_specific_indices"
+      >
+        Restore specific indices
+      </label>
+    </div>
+  </div>
+</div>
+`;

@@ -1,0 +1,229 @@
+/*
+ *   Copyright OpenSearch Contributors
+ *
+ *   Licensed under the Apache License, Version 2.0 (the "License").
+ *   You may not use this file except in compliance with the License.
+ *   A copy of the License is located at
+ *
+ *       http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *   or in the "license" file accompanying this file. This file is distributed
+ *   on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either
+ *   express or implied. See the License for the specific language governing
+ *   permissions and limitations under the License.
+ */
+
+import {
+  EuiSmallButton,
+  EuiFlexGroup,
+  EuiFlexItem,
+  EuiForm,
+  EuiGlobalToastList,
+  EuiPageHeader,
+  EuiSpacer,
+  EuiText,
+} from '@elastic/eui';
+import React, { useContext, useState } from 'react';
+import { BreadcrumbsPageDependencies } from '../../../types';
+import { InternalUserUpdate } from '../../types';
+import { ResourceType } from '../../../../../common';
+import { getUserDetail, updateUser } from '../../utils/internal-user-detail-utils';
+import { PanelWithHeader } from '../../utils/panel-with-header';
+import { PasswordEditPanel } from '../../utils/password-edit-panel';
+import {
+  createErrorToast,
+  createUnknownErrorToast,
+  useToastState,
+  getSuccessToastMessage,
+} from '../../utils/toast-utils';
+import { buildHashUrl, buildUrl } from '../../utils/url-builder';
+import { AttributePanel, buildAttributeState, unbuildAttributeState } from './attribute-panel';
+import { UserAttributeStateClass } from './types';
+import { setCrossPageToast } from '../../utils/storage-utils';
+import { generateResourceName } from '../../utils/resource-utils';
+import { NameRow } from '../../utils/name-row';
+import { constructErrorMessageAndLog } from '../../../error-utils';
+import { BackendRolePanel } from './backend-role-panel';
+import { DataSourceContext } from '../../app-router';
+import { SecurityPluginTopNavMenu } from '../../top-nav-menu';
+import { PageHeader } from '../../header/header-components';
+
+interface InternalUserEditDeps extends BreadcrumbsPageDependencies {
+  action: 'create' | 'edit' | 'duplicate';
+  // For creation, sourceUserName should be empty string.
+  // For editing, sourceUserName should be the name of the user to edit.
+  // For duplication, sourceUserName should be the name of the user to copy from.
+  sourceUserName: string;
+}
+
+const TITLE_TEXT_DICT = {
+  create: '내부 사용자 생성',
+  edit: '내부 사용자 편집',
+  duplicate: '내부 사용자 복제',
+};
+
+export function InternalUserEdit(props: InternalUserEditDeps) {
+  const [userName, setUserName] = useState<string>('');
+  const [password, setPassword] = useState<string>('');
+  const [isPasswordInvalid, setIsPasswordInvalid] = React.useState<boolean>(false);
+  const [attributes, setAttributes] = useState<UserAttributeStateClass[]>([]);
+  const [backendRoles, setBackendRoles] = useState<string[]>([]);
+
+  const [toasts, addToast, removeToast] = useToastState();
+
+  const [isFormValid, setIsFormValid] = useState<boolean>(true);
+  const dataSourceEnabled = !!props.depsStart.dataSource?.dataSourceEnabled;
+  const { dataSource, setDataSource } = useContext(DataSourceContext)!;
+
+  React.useEffect(() => {
+    const action = props.action;
+    if (action === 'edit' || action === 'duplicate') {
+      const fetchData = async () => {
+        try {
+          const user = await getUserDetail(
+            props.coreStart.http,
+            props.sourceUserName,
+            dataSource.id
+          );
+          setAttributes(buildAttributeState(user.attributes));
+          setBackendRoles(user.backend_roles);
+          setUserName(generateResourceName(action, props.sourceUserName));
+        } catch (e) {
+          addToast(createUnknownErrorToast('fetchUser', 'load data'));
+          console.error(e);
+        }
+      };
+
+      fetchData();
+    }
+  }, [addToast, props.action, props.coreStart.http, props.sourceUserName, dataSource]);
+
+  const updateUserHandler = async () => {
+    try {
+      if (isPasswordInvalid) {
+        addToast(createErrorToast('passwordInvalid', '업데이트 오류', '비밀번호가 일치하지 않습니다.'));
+        return;
+      }
+
+      if (password === '' && props.action !== 'edit') {
+        addToast(createErrorToast('emptyPassword', '업데이트 오류', '비밀번호를 입력해야 합니다.'));
+        return;
+      }
+
+      // Remove attributes with empty key
+      const validAttributes = attributes.filter((v: UserAttributeStateClass) => v.key !== '');
+
+      const updateObject: InternalUserUpdate = {
+        backend_roles: backendRoles,
+        attributes: unbuildAttributeState(validAttributes),
+      };
+
+      // Password field should be omitted if not updating password.
+      if (password !== '') {
+        updateObject.password = password;
+      }
+
+      await updateUser(props.coreStart.http, userName, updateObject, dataSource.id);
+
+      setCrossPageToast(buildUrl(ResourceType.users), {
+        id: 'updateUserSucceeded',
+        color: 'success',
+        title: `${getSuccessToastMessage(
+          'User',
+          props.action,
+          userName,
+          dataSourceEnabled,
+          dataSource
+        )}`,
+      });
+      // Redirect to user listing
+      window.location.href = buildHashUrl(ResourceType.users);
+    } catch (e) {
+      addToast(
+        createErrorToast('updateUserFailed', '업데이트 오류', constructErrorMessageAndLog(e, ''))
+      );
+    }
+  };
+
+  // Wazuh: description text and "Learn more" link hidden per request.
+  const descriptionData: any[] = [];
+
+  return (
+    <>
+      <SecurityPluginTopNavMenu
+        {...props}
+        dataSourcePickerReadOnly={true}
+        setDataSource={setDataSource}
+        selectedDataSource={dataSource}
+      />
+      <PageHeader
+        navigation={props.depsStart.navigation}
+        coreStart={props.coreStart}
+        descriptionControls={descriptionData}
+        fallBackComponent={
+          <>
+            <EuiSpacer />
+            <EuiPageHeader>
+              <EuiFlexGroup direction="column" gutterSize="xs">
+                <EuiFlexItem>
+                  <EuiText size="s">
+                    <h1>{TITLE_TEXT_DICT[props.action]}</h1>
+                  </EuiText>
+                </EuiFlexItem>
+                {/* Wazuh: description text and "Learn more" link hidden per request. */}
+              </EuiFlexGroup>
+            </EuiPageHeader>
+          </>
+        }
+        resourceType={ResourceType.users}
+        subAction={TITLE_TEXT_DICT[props.action]}
+        pageTitle={props.sourceUserName}
+      />
+      <PanelWithHeader headerText="자격 증명">
+        <EuiForm>
+          <NameRow
+            headerText="사용자 이름"
+            resourceName={userName}
+            resourceType="user"
+            action={props.action}
+            setNameState={setUserName}
+            setIsFormValid={setIsFormValid}
+          />
+          <PasswordEditPanel
+            coreStart={props.coreStart}
+            updatePassword={setPassword}
+            updateIsInvalid={setIsPasswordInvalid}
+          />
+        </EuiForm>
+      </PanelWithHeader>
+      <EuiSpacer size="m" />
+      <BackendRolePanel state={backendRoles} setState={setBackendRoles} />
+      <EuiSpacer size="m" />
+      <AttributePanel state={attributes} setState={setAttributes} />
+      <EuiSpacer size="m" />
+      <EuiFlexGroup justifyContent="flexEnd">
+        <EuiFlexItem grow={false}>
+          <EuiSmallButton
+            onClick={() => {
+              window.location.href = buildHashUrl(ResourceType.users);
+            }}
+          >
+            취소
+          </EuiSmallButton>
+        </EuiFlexItem>
+        <EuiFlexItem grow={false}>
+          <EuiSmallButton
+            id="submit"
+            fill
+            onClick={updateUserHandler}
+            disabled={!isFormValid}
+            data-test-subj="submit-save-user"
+          >
+            {props.action === 'edit' ? '수정' : '생성'}
+          </EuiSmallButton>
+        </EuiFlexItem>
+      </EuiFlexGroup>
+      <EuiGlobalToastList toasts={toasts} toastLifeTimeMs={10000} dismissToast={removeToast} />
+    </>
+  );
+}

@@ -1,0 +1,391 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Tenant list AccessError component should load access error component: configure tab 1`] = `
+<AccessErrorComponent
+  dataSourceLabel="Local cluster"
+  message="You do not have permissions to configure tenancy"
+/>
+`;
+
+exports[`Tenant list AccessError component should load access error component: manage tab 1`] = `
+<AccessErrorComponent
+  dataSourceLabel="Local cluster"
+  message="You do not have permissions to manage tenants"
+/>
+`;
+
+exports[`Tenant list Action menu click Duplicate click 1`] = `
+<Fragment>
+  <EuiPageHeader />
+  <EuiPageContent>
+    <EuiPageContentHeader>
+      <EuiPageContentHeaderSection>
+        <EuiTitle
+          size="s"
+        >
+          <h3>
+            Dashboards tenants
+            <span
+              className="panel-header-count"
+            >
+               
+              (
+              1
+              )
+            </span>
+          </h3>
+        </EuiTitle>
+        <EuiText
+          color="subdued"
+          size="s"
+        >
+          Manage tenants that already have been created. Global tenant is the default when tenancy is turned off.
+        </EuiText>
+      </EuiPageContentHeaderSection>
+      <EuiPageContentHeaderSection>
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="switchTenant"
+              key="switchTenant"
+              onClick={[Function]}
+            >
+              Switch to selected tenant
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="edit"
+              key="edit"
+              onClick={[Function]}
+            >
+              Edit
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="duplicate"
+              key="duplicate"
+              onClick={[Function]}
+            >
+              Duplicate
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="createDashboard"
+              key="createDashboard"
+              onClick={[Function]}
+            >
+              Create dashboard
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="createVisualizations"
+              key="createVisualizations"
+              onClick={[Function]}
+            >
+              Create visualizations
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={true}
+              id="set as Global Default"
+              key="Set as Global Default key"
+              onClick={[Function]}
+            >
+              Set as Default Tenant
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              color="danger"
+              disabled={false}
+              id="delete"
+              key="delete"
+              onClick={[MockFunction]}
+            >
+              Delete
+            </EuiSmallButtonEmpty>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiSmallButton
+              fill={true}
+              id="createTenant"
+              onClick={[Function]}
+            >
+              Create tenant
+            </EuiSmallButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiPageContentHeaderSection>
+    </EuiPageContentHeader>
+    <EuiPageBody>
+      <EuiInMemoryTable
+        columns={
+          Array [
+            Object {
+              "field": "tenant",
+              "name": "Name",
+              "render": [Function],
+              "sortable": true,
+            },
+            Object {
+              "field": "tenant",
+              "name": "Status",
+              "render": [Function],
+            },
+            Object {
+              "field": "description",
+              "name": "Description",
+              "truncateText": true,
+            },
+            Object {
+              "field": "tenantValue",
+              "name": "Dashboard",
+              "render": [Function],
+            },
+            Object {
+              "field": "tenantValue",
+              "name": "Visualizations",
+              "render": [Function],
+            },
+            Object {
+              "field": "reserved",
+              "name": "Customization",
+              "render": [Function],
+            },
+          ]
+        }
+        error=""
+        itemId="tenant"
+        items={
+          Array [
+            Object {
+              "description": "",
+              "reserved": false,
+              "tenant": "tenant_2",
+              "tenantValue": "tenant_2",
+            },
+          ]
+        }
+        loading={false}
+        message={false}
+        pagination={true}
+        responsive={true}
+        search={
+          Object {
+            "box": Object {
+              "placeholder": "Find tenant",
+            },
+            "onChange": [Function],
+          }
+        }
+        selection={
+          Object {
+            "onSelectionChange": [MockFunction],
+          }
+        }
+        sorting={true}
+        tableLayout="auto"
+      />
+    </EuiPageBody>
+  </EuiPageContent>
+  <TenantEditModal
+    action="duplicate"
+    handleClose={[Function]}
+    handleSave={[Function]}
+    tenantDescription=""
+    tenantName="tenant_2_copy"
+  />
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;
+
+exports[`Tenant list Action menu click Edit click 1`] = `
+<Fragment>
+  <EuiPageHeader />
+  <EuiPageContent>
+    <EuiPageContentHeader>
+      <EuiPageContentHeaderSection>
+        <EuiTitle
+          size="s"
+        >
+          <h3>
+            Dashboards tenants
+            <span
+              className="panel-header-count"
+            >
+               
+              (
+              1
+              )
+            </span>
+          </h3>
+        </EuiTitle>
+        <EuiText
+          color="subdued"
+          size="s"
+        >
+          Manage tenants that already have been created. Global tenant is the default when tenancy is turned off.
+        </EuiText>
+      </EuiPageContentHeaderSection>
+      <EuiPageContentHeaderSection>
+        <EuiFlexGroup>
+          <EuiFlexItem>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="switchTenant"
+              key="switchTenant"
+              onClick={[Function]}
+            >
+              Switch to selected tenant
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="edit"
+              key="edit"
+              onClick={[Function]}
+            >
+              Edit
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="duplicate"
+              key="duplicate"
+              onClick={[Function]}
+            >
+              Duplicate
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="createDashboard"
+              key="createDashboard"
+              onClick={[Function]}
+            >
+              Create dashboard
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="createVisualizations"
+              key="createVisualizations"
+              onClick={[Function]}
+            >
+              Create visualizations
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={true}
+              id="set as Global Default"
+              key="Set as Global Default key"
+              onClick={[Function]}
+            >
+              Set as Default Tenant
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              color="danger"
+              disabled={false}
+              id="delete"
+              key="delete"
+              onClick={[MockFunction]}
+            >
+              Delete
+            </EuiSmallButtonEmpty>
+          </EuiFlexItem>
+          <EuiFlexItem>
+            <EuiSmallButton
+              fill={true}
+              id="createTenant"
+              onClick={[Function]}
+            >
+              Create tenant
+            </EuiSmallButton>
+          </EuiFlexItem>
+        </EuiFlexGroup>
+      </EuiPageContentHeaderSection>
+    </EuiPageContentHeader>
+    <EuiPageBody>
+      <EuiInMemoryTable
+        columns={
+          Array [
+            Object {
+              "field": "tenant",
+              "name": "Name",
+              "render": [Function],
+              "sortable": true,
+            },
+            Object {
+              "field": "tenant",
+              "name": "Status",
+              "render": [Function],
+            },
+            Object {
+              "field": "description",
+              "name": "Description",
+              "truncateText": true,
+            },
+            Object {
+              "field": "tenantValue",
+              "name": "Dashboard",
+              "render": [Function],
+            },
+            Object {
+              "field": "tenantValue",
+              "name": "Visualizations",
+              "render": [Function],
+            },
+            Object {
+              "field": "reserved",
+              "name": "Customization",
+              "render": [Function],
+            },
+          ]
+        }
+        error=""
+        itemId="tenant"
+        items={
+          Array [
+            Object {
+              "description": "",
+              "reserved": false,
+              "tenant": "tenant_2",
+              "tenantValue": "tenant_2",
+            },
+          ]
+        }
+        loading={false}
+        message={false}
+        pagination={true}
+        responsive={true}
+        search={
+          Object {
+            "box": Object {
+              "placeholder": "Find tenant",
+            },
+            "onChange": [Function],
+          }
+        }
+        selection={
+          Object {
+            "onSelectionChange": [MockFunction],
+          }
+        }
+        sorting={true}
+        tableLayout="auto"
+      />
+    </EuiPageBody>
+  </EuiPageContent>
+  <TenantEditModal
+    action="edit"
+    handleClose={[Function]}
+    handleSave={[Function]}
+    tenantDescription=""
+    tenantName="tenant_2"
+  />
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;

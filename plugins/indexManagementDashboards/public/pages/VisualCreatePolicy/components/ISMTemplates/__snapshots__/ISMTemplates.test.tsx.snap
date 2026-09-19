@@ -1,0 +1,115 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ISMTemplates /> spec renders the component 1`] = `
+<div
+  class="euiPanel euiPanel--paddingMedium euiPanel--borderRadiusMedium euiPanel--plain euiPanel--hasShadow"
+>
+  <div
+    class="euiFlexGroup euiFlexGroup--gutterExtraSmall euiFlexGroup--alignItemsCenter euiFlexGroup--directionRow euiFlexGroup--responsive"
+  >
+    <div
+      class="euiFlexItem euiFlexItem--flexGrowZero"
+    >
+      <h2
+        class="euiTitle euiTitle--small"
+      >
+        ISM templates
+      </h2>
+    </div>
+    <div
+      class="euiFlexItem"
+    >
+      <div
+        class="euiText euiText--medium"
+      >
+        <div
+          class="euiTextColor euiTextColor--subdued"
+        >
+          <i>
+             – optional
+          </i>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    class="euiText euiText--extraSmall"
+  >
+    <div
+      class="euiTextColor euiTextColor--subdued"
+    >
+      <p
+        style="font-weight: 350;"
+      >
+        Specify ISM template patterns that match the index to apply the policy.
+         
+        <a
+          class="euiLink euiLink--primary"
+          href="https://opensearch.org/docs/im-plugin/ism/index/"
+          rel="noopener noreferrer"
+          target="_blank"
+        >
+          Learn more
+          EuiIconMock
+          <span
+            class="euiScreenReaderOnly"
+          >
+            (opens in a new tab or window)
+          </span>
+        </a>
+      </p>
+    </div>
+  </div>
+  <hr
+    class="euiHorizontalRule euiHorizontalRule--full euiHorizontalRule--marginXSmall"
+  />
+  <div
+    style="padding: 10px 0px 0px 10px;"
+  >
+    <div
+      class="euiEmptyPrompt"
+      style="max-width: 37em;"
+    >
+      <div
+        class="euiText euiText--small euiTitle euiTitle--small"
+      >
+        <h3>
+          No ISM templates
+        </h3>
+      </div>
+      <span
+        class="euiTextColor euiTextColor--subdued"
+      >
+        <div
+          class="euiSpacer euiSpacer--m"
+        />
+        <div
+          class="euiText euiText--medium"
+        >
+          <p>
+            Your policy currently has no ISM templates defined. Add ISM templates to automatically apply the policy to indices created in the future.
+          </p>
+        </div>
+      </span>
+      <div
+        class="euiSpacer euiSpacer--l"
+      />
+      <button
+        class="euiButton euiButton--primary euiButton--small"
+        data-test-subj="ism-templates-add-template-button"
+        type="button"
+      >
+        <span
+          class="euiButtonContent euiButton__content"
+        >
+          <span
+            class="euiButton__text"
+          >
+            Add template
+          </span>
+        </span>
+      </button>
+    </div>
+  </div>
+</div>
+`;
