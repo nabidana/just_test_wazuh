@@ -1,0 +1,42 @@
+import { ConfigService, Env, RawConfigurationProvider } from './config';
+import { ILoggingSystem } from './logging';
+import { InternalCoreSetup, InternalCoreStart } from './internal_types';
+import { DynamicConfigService } from './config/dynamic_config_service';
+export declare class Server {
+    #private;
+    readonly env: Env;
+    private readonly loggingSystem;
+    readonly configService: ConfigService;
+    readonly dynamicConfigService: DynamicConfigService;
+    private readonly capabilities;
+    private readonly context;
+    private readonly opensearch;
+    private readonly http;
+    private readonly rendering;
+    private readonly legacy;
+    private readonly log;
+    private readonly plugins;
+    private readonly savedObjects;
+    private readonly uiSettings;
+    private readonly workspace;
+    private readonly environment;
+    private readonly metrics;
+    private readonly httpResources;
+    private readonly status;
+    private readonly logging;
+    private readonly coreApp;
+    private readonly auditTrail;
+    private readonly coreUsageData;
+    private readonly security;
+    private readonly crossCompatibility;
+    private coreStart?;
+    private readonly logger;
+    private openSearchPluginDeps;
+    constructor(rawConfigProvider: RawConfigurationProvider, env: Env, loggingSystem: ILoggingSystem);
+    setup(): Promise<InternalCoreSetup>;
+    start(): Promise<InternalCoreStart>;
+    stop(): Promise<void>;
+    private registerCoreContext;
+    setupCoreConfig(): Promise<void>;
+}
+//# sourceMappingURL=server.d.ts.map

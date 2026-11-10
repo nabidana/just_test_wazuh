@@ -1,0 +1,1 @@
+{"version":3,"file":"opensearch_dashboards_migrator.mock.d.ts","sourceRoot":"","sources":["../../../../../../../../server/saved_objects/migrations/opensearch_dashboards/opensearch_dashboards_migrator.mock.ts"],"names":[],"mappings":";AAgCA,OAAO,EACL,4BAA4B,EAE7B,MAAM,kCAAkC,CAAC;AAG1C,OAAO,EAAE,gBAAgB,EAAE,MAAM,aAAa,CAAC;AAiD/C,eAAO,MAAM,gCAAgC;;eA5BlC,gBAAgB,EAAE;;CA8B5B,CAAC"}

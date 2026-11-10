@@ -1,0 +1,1 @@
+{"version":3,"file":"type.d.ts","sourceRoot":"","sources":["../../../../../../../../server/logging/layouts/conversions/type.ts"],"names":[],"mappings":"AA8BA,OAAO,EAAE,SAAS,EAAE,MAAM,cAAc,CAAC;AAEzC,MAAM,WAAW,UAAU;IACzB,OAAO,EAAE,MAAM,CAAC;IAChB,OAAO,EAAE,CAAC,MAAM,EAAE,SAAS,EAAE,SAAS,EAAE,OAAO,KAAK,MAAM,CAAC;IAC3D,QAAQ,CAAC,EAAE,CAAC,KAAK,EAAE,MAAM,KAAK,IAAI,CAAC;CACpC"}

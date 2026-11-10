@@ -1,0 +1,34 @@
+/// <reference types="jest" />
+export declare const MockInjectedMetadataService: jest.Mocked<Pick<import("./injected_metadata").InjectedMetadataService, "start" | "setup">>;
+export declare const InjectedMetadataServiceConstructor: jest.Mock<any, any>;
+export declare const MockFatalErrorsService: jest.Mocked<Pick<import("./fatal_errors").FatalErrorsService, "start" | "setup">>;
+export declare const FatalErrorsServiceConstructor: jest.Mock<any, any>;
+export declare const MockI18nService: jest.Mocked<Pick<import("./i18n").I18nService, "start" | "stop" | "getContext">>;
+export declare const I18nServiceConstructor: jest.Mock<any, any>;
+export declare const MockNotificationsService: jest.Mocked<Pick<import("./notifications").NotificationsService, "start" | "stop" | "setup">>;
+export declare const NotificationServiceConstructor: jest.Mock<any, any>;
+export declare const MockHttpService: jest.Mocked<Pick<import("./http").HttpService, "start" | "stop" | "setup">>;
+export declare const HttpServiceConstructor: jest.Mock<any, any>;
+export declare const MockUiSettingsService: jest.Mocked<Pick<import("./ui_settings").UiSettingsService, "start" | "stop" | "setup">>;
+export declare const UiSettingsServiceConstructor: jest.Mock<any, any>;
+export declare const MockChromeService: jest.Mocked<Pick<import("./chrome").ChromeService, "start" | "stop" | "setup">>;
+export declare const ChromeServiceConstructor: jest.Mock<any, any>;
+export declare const MockOverlayService: jest.Mocked<Pick<import("./overlays").OverlayService, "start">>;
+export declare const OverlayServiceConstructor: jest.Mock<any, any>;
+export declare const MockPluginsService: jest.Mocked<Pick<import("./plugins").PluginsService, "start" | "stop" | "setup" | "getOpaqueIds">>;
+export declare const PluginsServiceConstructor: jest.Mock<any, any>;
+export declare const MockApplicationService: jest.Mocked<Pick<import("./application").ApplicationService, "start" | "stop" | "setup">>;
+export declare const ApplicationServiceConstructor: jest.Mock<any, any>;
+export declare const MockDocLinksService: jest.Mocked<Pick<import("./doc_links").DocLinksService, "start" | "setup">>;
+export declare const DocLinksServiceConstructor: jest.Mock<any, any>;
+export declare const MockRenderingService: jest.Mocked<Pick<import("./rendering").RenderingService, "start">>;
+export declare const RenderingServiceConstructor: jest.Mock<any, any>;
+export declare const MockContextService: jest.Mocked<Pick<import("./context").ContextService, "setup">>;
+export declare const ContextServiceConstructor: jest.Mock<any, any>;
+export declare const MockIntegrationsService: jest.Mocked<Pick<import("./integrations").IntegrationsService, "start" | "stop" | "setup">>;
+export declare const IntegrationsServiceConstructor: jest.Mock<any, any>;
+export declare const MockCoreApp: jest.Mocked<Pick<import("./core_app").CoreApp, "start" | "stop" | "setup">>;
+export declare const CoreAppConstructor: jest.Mock<any, any>;
+export declare const MockWorkspacesService: jest.Mocked<Pick<import("./workspace").WorkspacesService, "start" | "stop" | "setup">>;
+export declare const WorkspacesServiceConstructor: jest.Mock<any, any>;
+//# sourceMappingURL=core_system.test.mocks.d.ts.map

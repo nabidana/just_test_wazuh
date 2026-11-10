@@ -1,0 +1,1 @@
+{"version":3,"file":"mocks.d.ts","sourceRoot":"","sources":["../../../../../../../server/saved_objects/migrations/mocks.ts"],"names":[],"mappings":";;AA8BA,OAAO,EAAE,2BAA2B,EAAE,MAAM,SAAS,CAAC;AACtD,OAAO,EAAE,2BAA2B,EAAE,MAAM,QAAQ,CAAC;AAErD,eAAO,MAAM,qCAAqC,QAAO,KAAK,MAAM,CAClE,2BAA2B,CAW5B,CAAC;AASF,eAAO,MAAM,cAAc;yBAPG,KAAK,MAAM,CAAC,2BAA2B,CAAC;CASrE,CAAC"}

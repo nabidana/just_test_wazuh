@@ -1,0 +1,1 @@
+{"version":3,"file":"registry.d.ts","sourceRoot":"","sources":["../../../../public/split_panel/registry.ts"],"names":[],"mappings":"AA8BA,MAAM,WAAW,eAAe;IAC9B,QAAQ,EAAE,CAAC,OAAO,EAAE,MAAM,KAAK,IAAI,CAAC;IACpC,QAAQ,EAAE,MAAM,MAAM,CAAC;IACvB,KAAK,EAAE,MAAM,CAAC;CACf;AAED,qBAAa,aAAa;IACxB,OAAO,CAAC,MAAM,CAAyB;IAEvC,aAAa,CAAC,KAAK,EAAE,eAAe;IAIpC,SAAS;CAGV"}
