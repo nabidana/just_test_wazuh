@@ -1,1 +1,0 @@
-{"version":3,"file":"cross_compatibility.d.ts","sourceRoot":"","sources":["../../../../../types/cross_compatibility.ts"],"names":[],"mappings":"AAKA,cAAc;AACd,MAAM,WAAW,wBAAwB;IACvC,kCAAkC;IAClC,UAAU,EAAE,MAAM,CAAC;IAEnB,8FAA8F;IAC9F,YAAY,EAAE,OAAO,CAAC;IAEtB;;;OAGG;IACH,qBAAqB,CAAC,EAAE,MAAM,CAAC;IAE/B;;;OAGG;IACH,iBAAiB,EAAE,MAAM,EAAE,CAAC;CAC7B"}

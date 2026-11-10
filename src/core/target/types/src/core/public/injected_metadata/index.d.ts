@@ -1,2 +1,0 @@
-export { InjectedMetadataService, InjectedMetadataParams, InjectedMetadataSetup, InjectedMetadataStart, InjectedPluginMetadata, } from './injected_metadata_service';
-//# sourceMappingURL=index.d.ts.map

@@ -1,1 +1,0 @@
-{"version":3,"file":"core_app.mock.d.ts","sourceRoot":"","sources":["../../../../../../public/core_app/core_app.mock.ts"],"names":[],"mappings":";;AA8BA,OAAO,KAAK,EAAE,eAAe,EAAE,MAAM,oBAAoB,CAAC;AAC1D,OAAO,EAAE,OAAO,EAAE,MAAM,YAAY,CAAC;AAErC,aAAK,eAAe,GAAG,eAAe,CAAC,OAAO,CAAC,CAAC;AAOhD,eAAO,MAAM,WAAW;kBAND,KAAK,MAAM,CAAC,eAAe,CAAC;CAQlD,CAAC"}
