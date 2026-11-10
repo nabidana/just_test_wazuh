@@ -1,0 +1,75 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Account menu - Role info panel renders 1`] = `
+<EuiOverlayMask>
+  <EuiModal
+    data-test-subj="role-info-modal"
+    onClose={[MockFunction]}
+  >
+    <EuiSpacer />
+    <EuiModalBody>
+      <EuiText
+        size="s"
+      >
+        <h2>
+          Roles (
+          2
+          )
+        </h2>
+      </EuiText>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        Roles you are currently mapped to by your administrator.
+      </EuiText>
+      <EuiSpacer />
+      <EuiText
+        key="role1"
+        size="s"
+      >
+        role1
+        <br />
+      </EuiText>
+      <EuiText
+        key="role2"
+        size="s"
+      >
+        role2
+        <br />
+      </EuiText>
+      <EuiHorizontalRule />
+      <EuiText
+        size="s"
+      >
+        <h2>
+          Backend roles (
+          2
+          )
+        </h2>
+      </EuiText>
+      <EuiText
+        color="subdued"
+        size="s"
+      >
+        Backend roles you are currently mapped to by your administrator.
+      </EuiText>
+      <EuiSpacer />
+      <EuiText
+        key="backend_role1"
+        size="s"
+      >
+        backend_role1
+        <br />
+      </EuiText>
+      <EuiText
+        key="backend_role2"
+        size="s"
+      >
+        backend_role2
+        <br />
+      </EuiText>
+    </EuiModalBody>
+  </EuiModal>
+</EuiOverlayMask>
+`;

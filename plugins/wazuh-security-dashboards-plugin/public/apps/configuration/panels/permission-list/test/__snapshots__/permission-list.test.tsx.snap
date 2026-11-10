@@ -1,0 +1,181 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Permission list page  AccessError component should load access error component 1`] = `
+<Fragment>
+  <Memo()
+    config={Object {}}
+    coreStart={
+      Object {
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    dataSourcePickerReadOnly={false}
+    depsStart={Object {}}
+    params={Object {}}
+    selectedDataSource={
+      Object {
+        "id": "test",
+      }
+    }
+    setDataSource={[MockFunction]}
+  />
+  <PageHeader
+    appRightControls={
+      Array [
+        Object {
+          "isLoading": false,
+          "renderComponent": <EuiFlexItem>
+            <EuiSmallButtonEmpty
+              onClick={[Function]}
+            >
+              Create from blank
+            </EuiSmallButtonEmpty>
+            <EuiSmallButtonEmpty
+              disabled={false}
+              id="create-from-selection"
+              onClick={[Function]}
+            >
+              Create from selection
+            </EuiSmallButtonEmpty>
+          </EuiFlexItem>,
+        },
+      ]
+    }
+    coreStart={
+      Object {
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    count={0}
+    descriptionControls={
+      Array [
+        Object {
+          "isLoading": false,
+          "renderComponent": <EuiText
+            color="subdued"
+            size="xs"
+          >
+            Permissions are individual actions, such as cluster:admin/snapshot/restore, which lets you restore snapshots. Action groups 
+            <br />
+            are reusable collections of permissions, such as MANAGE_SNAPSHOTS, which lets you view, take, delete, and restore 
+            <br />
+            snapshots. You can often meet your security needs using the default action groups, but you might find it convenient to create 
+            <br />
+            your own. 
+            <ExternalLink
+              href="https://opensearch.org/docs/latest/security-plugin/access-control/default-action-groups/"
+            />
+          </EuiText>,
+        },
+      ]
+    }
+    fallBackComponent={
+      <EuiPageHeader>
+        <EuiText
+          size="s"
+        >
+          <h1>
+            Permissions
+          </h1>
+        </EuiText>
+      </EuiPageHeader>
+    }
+    resourceType="permissions"
+  />
+  <AccessErrorComponent
+    loading={false}
+  />
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;

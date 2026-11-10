@@ -1,0 +1,939 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Role view basic rendering when permission tab is selected 1`] = `
+<Fragment>
+  <Memo()
+    config={Object {}}
+    coreStart={
+      Object {
+        "chrome": Object {
+          "navGroup": Object {
+            "getNavGroupEnabled": [MockFunction],
+          },
+          "setBreadcrumbs": [MockFunction],
+        },
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    dataSourcePickerReadOnly={true}
+    depsStart={Object {}}
+    params={Object {}}
+    prevAction=""
+    roleName="role"
+    selectedDataSource={
+      Object {
+        "id": "test",
+      }
+    }
+    setDataSource={[MockFunction]}
+  />
+  <PageHeader
+    appRightControls={
+      Array [
+        Object {
+          "ariaLabel": "delete",
+          "color": "danger",
+          "iconType": "trash",
+          "isLoading": false,
+          "run": [Function],
+          "testId": "delete",
+          "type": "button",
+        },
+        Object {
+          "href": "#/roles/duplicate/role",
+          "isLoading": false,
+          "label": "Duplicate",
+          "type": "button",
+        },
+        Object {
+          "fill": true,
+          "href": "#/roles/edit/role",
+          "isLoading": false,
+          "label": "Edit role",
+          "type": "button",
+        },
+      ]
+    }
+    coreStart={
+      Object {
+        "chrome": Object {
+          "navGroup": Object {
+            "getNavGroupEnabled": [MockFunction],
+          },
+          "setBreadcrumbs": [MockFunction],
+        },
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    fallBackComponent={
+      <React.Fragment>
+        <EuiPageContentHeader>
+          <EuiPageContentHeaderSection>
+            <EuiText
+              size="s"
+            >
+              <h1>
+                role
+              </h1>
+            </EuiText>
+          </EuiPageContentHeaderSection>
+          <EuiPageContentHeaderSection>
+            <EuiFlexGroup
+              gutterSize="s"
+            >
+              <EuiFlexItem>
+                <EuiSmallButtonEmpty
+                  href="#/roles/duplicate/role"
+                >
+                  duplicate
+                </EuiSmallButtonEmpty>
+                <EuiSmallButtonEmpty
+                  color="danger"
+                  data-test-subj="delete"
+                  onClick={[Function]}
+                >
+                  delete
+                </EuiSmallButtonEmpty>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiSmallButton
+                  href="#/roles/edit/role"
+                >
+                  Edit role
+                </EuiSmallButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiPageContentHeaderSection>
+        </EuiPageContentHeader>
+      </React.Fragment>
+    }
+    resourceType="roles"
+    subAction="role"
+  />
+  <EuiTabbedContent
+    autoFocus="initial"
+    initialSelectedTab={
+      Object {
+        "content": <React.Fragment>
+          <EuiSpacer
+            size="m"
+          />
+          <EuiSpacer
+            size="m"
+          />
+          <ClusterPermissionPanel
+            actionGroups={Object {}}
+            clusterPermissions={Array []}
+            isReserved={false}
+            loading={false}
+            roleName="role"
+          />
+          <EuiSpacer
+            size="m"
+          />
+          <IndexPermissionPanel
+            actionGroups={Object {}}
+            errorFlag={false}
+            indexPermissions={Array []}
+            isReserved={false}
+            loading={false}
+            roleName="role"
+          />
+          <EuiSpacer
+            size="m"
+          />
+          <TenantsPanel
+            coreStart={
+              Object {
+                "chrome": Object {
+                  "navGroup": Object {
+                    "getNavGroupEnabled": [MockFunction],
+                  },
+                  "setBreadcrumbs": [MockFunction],
+                },
+                "http": 1,
+                "uiSettings": Object {
+                  "get": [MockFunction] {
+                    "calls": Array [
+                      Array [
+                        "home:useNewHomePage",
+                      ],
+                    ],
+                    "results": Array [
+                      Object {
+                        "type": "return",
+                        "value": false,
+                      },
+                    ],
+                  },
+                },
+              }
+            }
+            dataSourceId="test"
+            errorFlag={false}
+            isReserved={false}
+            loading={false}
+            roleName="role"
+            tenantPermissions={Array []}
+          />
+        </React.Fragment>,
+        "disabled": false,
+        "id": "permissions",
+        "name": "Permissions",
+      }
+    }
+    size="s"
+    tabs={
+      Array [
+        Object {
+          "content": <React.Fragment>
+            <EuiSpacer
+              size="m"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <ClusterPermissionPanel
+              actionGroups={Object {}}
+              clusterPermissions={Array []}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <IndexPermissionPanel
+              actionGroups={Object {}}
+              errorFlag={false}
+              indexPermissions={Array []}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <TenantsPanel
+              coreStart={
+                Object {
+                  "chrome": Object {
+                    "navGroup": Object {
+                      "getNavGroupEnabled": [MockFunction],
+                    },
+                    "setBreadcrumbs": [MockFunction],
+                  },
+                  "http": 1,
+                  "uiSettings": Object {
+                    "get": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          "home:useNewHomePage",
+                        ],
+                      ],
+                      "results": Array [
+                        Object {
+                          "type": "return",
+                          "value": false,
+                        },
+                      ],
+                    },
+                  },
+                }
+              }
+              dataSourceId="test"
+              errorFlag={false}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+              tenantPermissions={Array []}
+            />
+          </React.Fragment>,
+          "disabled": false,
+          "id": "permissions",
+          "name": "Permissions",
+        },
+        Object {
+          "content": <React.Fragment>
+            <EuiSpacer />
+            <EuiPageContent>
+              <EuiPageContentHeader>
+                <EuiPageContentHeaderSection>
+                  <EuiTitle
+                    size="s"
+                  >
+                    <h3>
+                      Mapped users
+                      <span
+                        className="panel-header-count"
+                      >
+                         (
+                        0
+                        )
+                      </span>
+                    </h3>
+                  </EuiTitle>
+                  <EuiText
+                    className="panel-header-subtext"
+                    color="subdued"
+                    size="xs"
+                  >
+                    You can map two types of users: users and backend roles. A user can have its own backend role and host for an external authentication and authorization. A backend role directly maps to roles through an external authentication system.
+                     
+                    <ExternalLink
+                      href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#map-users-to-roles"
+                    />
+                  </EuiText>
+                </EuiPageContentHeaderSection>
+                <EuiPageContentHeaderSection>
+                  <EuiFlexGroup>
+                    <EuiFlexItem>
+                      <EuiSmallButton
+                        disabled={true}
+                        onClick={[MockFunction]}
+                      >
+                        Delete mapping
+                      </EuiSmallButton>
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiSmallButton
+                        data-test-subj="manage-mapping"
+                        onClick={[Function]}
+                      >
+                        Manage mapping
+                      </EuiSmallButton>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiPageContentHeaderSection>
+              </EuiPageContentHeader>
+              <EuiHorizontalRule
+                margin="s"
+              />
+              <EuiPageBody>
+                <EuiInMemoryTable
+                  columns={
+                    Array [
+                      Object {
+                        "field": "userType",
+                        "name": "User type",
+                        "sortable": true,
+                      },
+                      Object {
+                        "field": "userName",
+                        "name": "User",
+                        "sortable": true,
+                        "truncateText": true,
+                      },
+                    ]
+                  }
+                  data-test-subj="role-mapping-list"
+                  error=""
+                  itemId="userName"
+                  items={Array []}
+                  loading={false}
+                  message={
+                    <EuiEmptyPrompt
+                      actions={
+                        <EuiFlexGroup
+                          alignItems="center"
+                          gutterSize="s"
+                        >
+                          <EuiFlexItem>
+                            <ExternalLinkButton
+                              href="#/users/create"
+                              text="Create internal user"
+                            />
+                          </EuiFlexItem>
+                          <EuiFlexItem>
+                            <EuiSmallButton
+                              data-test-subj="map-users"
+                              fill={true}
+                              onClick={[Function]}
+                            >
+                              Map users
+                            </EuiSmallButton>
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
+                      }
+                      body={
+                        <EuiText
+                          color="subdued"
+                          grow={false}
+                          size="s"
+                        >
+                          <p>
+                            You can map users or backend roles to this role
+                          </p>
+                        </EuiText>
+                      }
+                      title={
+                        <h2>
+                          No user has been mapped to this role
+                        </h2>
+                      }
+                      titleSize="s"
+                    />
+                  }
+                  pagination={true}
+                  responsive={true}
+                  selection={
+                    Object {
+                      "onSelectionChange": [Function],
+                    }
+                  }
+                  sorting={true}
+                  tableLayout="auto"
+                />
+              </EuiPageBody>
+            </EuiPageContent>
+          </React.Fragment>,
+          "disabled": false,
+          "id": "users",
+          "name": "Mapped users",
+        },
+      ]
+    }
+  />
+  <EuiSpacer />
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;
+
+exports[`Role view renders when mapped user tab is selected 1`] = `
+<Fragment>
+  <Memo()
+    config={Object {}}
+    coreStart={
+      Object {
+        "chrome": Object {
+          "navGroup": Object {
+            "getNavGroupEnabled": [MockFunction],
+          },
+          "setBreadcrumbs": [MockFunction],
+        },
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    dataSourcePickerReadOnly={true}
+    depsStart={Object {}}
+    params={Object {}}
+    prevAction="mapuser"
+    roleName="role"
+    selectedDataSource={
+      Object {
+        "id": "test",
+      }
+    }
+    setDataSource={[MockFunction]}
+  />
+  <PageHeader
+    appRightControls={
+      Array [
+        Object {
+          "ariaLabel": "delete",
+          "color": "danger",
+          "iconType": "trash",
+          "isLoading": false,
+          "run": [Function],
+          "testId": "delete",
+          "type": "button",
+        },
+        Object {
+          "href": "#/roles/duplicate/role",
+          "isLoading": false,
+          "label": "Duplicate",
+          "type": "button",
+        },
+        Object {
+          "fill": true,
+          "href": "#/roles/edit/role",
+          "isLoading": false,
+          "label": "Edit role",
+          "type": "button",
+        },
+      ]
+    }
+    coreStart={
+      Object {
+        "chrome": Object {
+          "navGroup": Object {
+            "getNavGroupEnabled": [MockFunction],
+          },
+          "setBreadcrumbs": [MockFunction],
+        },
+        "http": 1,
+        "uiSettings": Object {
+          "get": [MockFunction] {
+            "calls": Array [
+              Array [
+                "home:useNewHomePage",
+              ],
+            ],
+            "results": Array [
+              Object {
+                "type": "return",
+                "value": false,
+              },
+            ],
+          },
+        },
+      }
+    }
+    fallBackComponent={
+      <React.Fragment>
+        <EuiPageContentHeader>
+          <EuiPageContentHeaderSection>
+            <EuiText
+              size="s"
+            >
+              <h1>
+                role
+              </h1>
+            </EuiText>
+          </EuiPageContentHeaderSection>
+          <EuiPageContentHeaderSection>
+            <EuiFlexGroup
+              gutterSize="s"
+            >
+              <EuiFlexItem>
+                <EuiSmallButtonEmpty
+                  href="#/roles/duplicate/role"
+                >
+                  duplicate
+                </EuiSmallButtonEmpty>
+                <EuiSmallButtonEmpty
+                  color="danger"
+                  data-test-subj="delete"
+                  onClick={[Function]}
+                >
+                  delete
+                </EuiSmallButtonEmpty>
+              </EuiFlexItem>
+              <EuiFlexItem>
+                <EuiSmallButton
+                  href="#/roles/edit/role"
+                >
+                  Edit role
+                </EuiSmallButton>
+              </EuiFlexItem>
+            </EuiFlexGroup>
+          </EuiPageContentHeaderSection>
+        </EuiPageContentHeader>
+      </React.Fragment>
+    }
+    resourceType="roles"
+    subAction="role"
+  />
+  <EuiTabbedContent
+    autoFocus="initial"
+    initialSelectedTab={
+      Object {
+        "content": <React.Fragment>
+          <EuiSpacer />
+          <EuiPageContent>
+            <EuiPageContentHeader>
+              <EuiPageContentHeaderSection>
+                <EuiTitle
+                  size="s"
+                >
+                  <h3>
+                    Mapped users
+                    <span
+                      className="panel-header-count"
+                    >
+                       (
+                      0
+                      )
+                    </span>
+                  </h3>
+                </EuiTitle>
+                <EuiText
+                  className="panel-header-subtext"
+                  color="subdued"
+                  size="xs"
+                >
+                  You can map two types of users: users and backend roles. A user can have its own backend role and host for an external authentication and authorization. A backend role directly maps to roles through an external authentication system.
+                   
+                  <ExternalLink
+                    href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#map-users-to-roles"
+                  />
+                </EuiText>
+              </EuiPageContentHeaderSection>
+              <EuiPageContentHeaderSection>
+                <EuiFlexGroup>
+                  <EuiFlexItem>
+                    <EuiSmallButton
+                      disabled={true}
+                      onClick={[MockFunction]}
+                    >
+                      Delete mapping
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                  <EuiFlexItem>
+                    <EuiSmallButton
+                      data-test-subj="manage-mapping"
+                      onClick={[Function]}
+                    >
+                      Manage mapping
+                    </EuiSmallButton>
+                  </EuiFlexItem>
+                </EuiFlexGroup>
+              </EuiPageContentHeaderSection>
+            </EuiPageContentHeader>
+            <EuiHorizontalRule
+              margin="s"
+            />
+            <EuiPageBody>
+              <EuiInMemoryTable
+                columns={
+                  Array [
+                    Object {
+                      "field": "userType",
+                      "name": "User type",
+                      "sortable": true,
+                    },
+                    Object {
+                      "field": "userName",
+                      "name": "User",
+                      "sortable": true,
+                      "truncateText": true,
+                    },
+                  ]
+                }
+                data-test-subj="role-mapping-list"
+                error=""
+                itemId="userName"
+                items={Array []}
+                loading={false}
+                message={
+                  <EuiEmptyPrompt
+                    actions={
+                      <EuiFlexGroup
+                        alignItems="center"
+                        gutterSize="s"
+                      >
+                        <EuiFlexItem>
+                          <ExternalLinkButton
+                            href="#/users/create"
+                            text="Create internal user"
+                          />
+                        </EuiFlexItem>
+                        <EuiFlexItem>
+                          <EuiSmallButton
+                            data-test-subj="map-users"
+                            fill={true}
+                            onClick={[Function]}
+                          >
+                            Map users
+                          </EuiSmallButton>
+                        </EuiFlexItem>
+                      </EuiFlexGroup>
+                    }
+                    body={
+                      <EuiText
+                        color="subdued"
+                        grow={false}
+                        size="s"
+                      >
+                        <p>
+                          You can map users or backend roles to this role
+                        </p>
+                      </EuiText>
+                    }
+                    title={
+                      <h2>
+                        No user has been mapped to this role
+                      </h2>
+                    }
+                    titleSize="s"
+                  />
+                }
+                pagination={true}
+                responsive={true}
+                selection={
+                  Object {
+                    "onSelectionChange": [Function],
+                  }
+                }
+                sorting={true}
+                tableLayout="auto"
+              />
+            </EuiPageBody>
+          </EuiPageContent>
+        </React.Fragment>,
+        "disabled": false,
+        "id": "users",
+        "name": "Mapped users",
+      }
+    }
+    size="s"
+    tabs={
+      Array [
+        Object {
+          "content": <React.Fragment>
+            <EuiSpacer
+              size="m"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <ClusterPermissionPanel
+              actionGroups={Object {}}
+              clusterPermissions={Array []}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <IndexPermissionPanel
+              actionGroups={Object {}}
+              errorFlag={false}
+              indexPermissions={Array []}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+            />
+            <EuiSpacer
+              size="m"
+            />
+            <TenantsPanel
+              coreStart={
+                Object {
+                  "chrome": Object {
+                    "navGroup": Object {
+                      "getNavGroupEnabled": [MockFunction],
+                    },
+                    "setBreadcrumbs": [MockFunction],
+                  },
+                  "http": 1,
+                  "uiSettings": Object {
+                    "get": [MockFunction] {
+                      "calls": Array [
+                        Array [
+                          "home:useNewHomePage",
+                        ],
+                      ],
+                      "results": Array [
+                        Object {
+                          "type": "return",
+                          "value": false,
+                        },
+                      ],
+                    },
+                  },
+                }
+              }
+              dataSourceId="test"
+              errorFlag={false}
+              isReserved={false}
+              loading={false}
+              roleName="role"
+              tenantPermissions={Array []}
+            />
+          </React.Fragment>,
+          "disabled": false,
+          "id": "permissions",
+          "name": "Permissions",
+        },
+        Object {
+          "content": <React.Fragment>
+            <EuiSpacer />
+            <EuiPageContent>
+              <EuiPageContentHeader>
+                <EuiPageContentHeaderSection>
+                  <EuiTitle
+                    size="s"
+                  >
+                    <h3>
+                      Mapped users
+                      <span
+                        className="panel-header-count"
+                      >
+                         (
+                        0
+                        )
+                      </span>
+                    </h3>
+                  </EuiTitle>
+                  <EuiText
+                    className="panel-header-subtext"
+                    color="subdued"
+                    size="xs"
+                  >
+                    You can map two types of users: users and backend roles. A user can have its own backend role and host for an external authentication and authorization. A backend role directly maps to roles through an external authentication system.
+                     
+                    <ExternalLink
+                      href="https://opensearch.org/docs/latest/security-plugin/access-control/users-roles/#map-users-to-roles"
+                    />
+                  </EuiText>
+                </EuiPageContentHeaderSection>
+                <EuiPageContentHeaderSection>
+                  <EuiFlexGroup>
+                    <EuiFlexItem>
+                      <EuiSmallButton
+                        disabled={true}
+                        onClick={[MockFunction]}
+                      >
+                        Delete mapping
+                      </EuiSmallButton>
+                    </EuiFlexItem>
+                    <EuiFlexItem>
+                      <EuiSmallButton
+                        data-test-subj="manage-mapping"
+                        onClick={[Function]}
+                      >
+                        Manage mapping
+                      </EuiSmallButton>
+                    </EuiFlexItem>
+                  </EuiFlexGroup>
+                </EuiPageContentHeaderSection>
+              </EuiPageContentHeader>
+              <EuiHorizontalRule
+                margin="s"
+              />
+              <EuiPageBody>
+                <EuiInMemoryTable
+                  columns={
+                    Array [
+                      Object {
+                        "field": "userType",
+                        "name": "User type",
+                        "sortable": true,
+                      },
+                      Object {
+                        "field": "userName",
+                        "name": "User",
+                        "sortable": true,
+                        "truncateText": true,
+                      },
+                    ]
+                  }
+                  data-test-subj="role-mapping-list"
+                  error=""
+                  itemId="userName"
+                  items={Array []}
+                  loading={false}
+                  message={
+                    <EuiEmptyPrompt
+                      actions={
+                        <EuiFlexGroup
+                          alignItems="center"
+                          gutterSize="s"
+                        >
+                          <EuiFlexItem>
+                            <ExternalLinkButton
+                              href="#/users/create"
+                              text="Create internal user"
+                            />
+                          </EuiFlexItem>
+                          <EuiFlexItem>
+                            <EuiSmallButton
+                              data-test-subj="map-users"
+                              fill={true}
+                              onClick={[Function]}
+                            >
+                              Map users
+                            </EuiSmallButton>
+                          </EuiFlexItem>
+                        </EuiFlexGroup>
+                      }
+                      body={
+                        <EuiText
+                          color="subdued"
+                          grow={false}
+                          size="s"
+                        >
+                          <p>
+                            You can map users or backend roles to this role
+                          </p>
+                        </EuiText>
+                      }
+                      title={
+                        <h2>
+                          No user has been mapped to this role
+                        </h2>
+                      }
+                      titleSize="s"
+                    />
+                  }
+                  pagination={true}
+                  responsive={true}
+                  selection={
+                    Object {
+                      "onSelectionChange": [Function],
+                    }
+                  }
+                  sorting={true}
+                  tableLayout="auto"
+                />
+              </EuiPageBody>
+            </EuiPageContent>
+          </React.Fragment>,
+          "disabled": false,
+          "id": "users",
+          "name": "Mapped users",
+        },
+      ]
+    }
+  />
+  <EuiSpacer />
+  <EuiGlobalToastList
+    dismissToast={[MockFunction]}
+    side="right"
+    toastLifeTimeMs={10000}
+    toasts={Array []}
+  />
+</Fragment>
+`;
