@@ -1,2 +1,0 @@
-export { ChromeNavGroupService, ChromeNavGroupServiceSetupContract, ChromeNavGroupServiceStartContract, ChromeRegistrationNavLink, NavGroupItemInMap, ChromeNavGroupUpdater, } from './nav_group_service';
-//# sourceMappingURL=index.d.ts.map

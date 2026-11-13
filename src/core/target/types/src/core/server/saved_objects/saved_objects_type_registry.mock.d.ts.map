@@ -1,1 +1,0 @@
-{"version":3,"file":"saved_objects_type_registry.mock.d.ts","sourceRoot":"","sources":["../../../../../../server/saved_objects/saved_objects_type_registry.mock.ts"],"names":[],"mappings":";;AA8BA,OAAO,EAAE,wBAAwB,EAAE,uBAAuB,EAAE,MAAM,+BAA+B,CAAC;AAmClG,eAAO,MAAM,gBAAgB;kBAjCE,KAAK,MAAM,CACxC,wBAAwB,GAAG,KAAK,uBAAuB,EAAE,cAAc,CAAC,CACzE;CAiCA,CAAC"}
