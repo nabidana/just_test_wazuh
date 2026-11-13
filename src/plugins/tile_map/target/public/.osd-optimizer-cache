@@ -1,0 +1,85 @@
+{
+  "bundleRefExportIds": [
+    "plugin/charts/public",
+    "plugin/mapsLegacy/public",
+    "plugin/opensearchDashboardsUtils/public",
+    "plugin/visDefaultEditor/public"
+  ],
+  "optimizerCacheKey": {
+    "lastCommit": "bc90b6a50a0989323442aba09ffd2ff270d5340f",
+    "bootstrap": "# this is only human readable for debugging, please don't try to parse this\n@opensearch/datemath:802e891ec9afa0bfc40a5c2109f523245b4ed004\n@osd/babel-preset:f14424fa133d133d8923d941a5f1773e4b624aa3\n@osd/config-schema:747161df0a0938b52f9193531de842d54b21d93f\n@osd/cross-platform:603e43c70dc6e3652698ec7204432ef7784b8e25\n@osd/dev-utils:ea1def231d960d14def8dd4d3427a45620d809d7\n@osd/expect:6cba2164a2c06247ac6e0b642afd65a26e62f89a\n@osd/i18n:412b81f338a04f80dbebfca5feed0d1b91eecd5c\n@osd/monaco:05d48fb281792b8535e5cc199425311ad7ab72ca\n@osd/optimizer:d757267e1102ed3c5fd98d4aa046b51ffff9bea1\n@osd/std:1e6fa591fc9ff8a4703496c4d660ba62d073e0e3\n@osd/ui-shared-deps:d6f1cddf22360c4c008a315fe28403cf61d40146\n@osd/utility-types:76e67a730a837263450c20faf348d29f4b0a8d26\n@osd/utils:c9a5292b3e1f9e214061e380f93cd824f5e7bd1e",
+    "deletedPaths": [],
+    "fileHashes": {},
+    "workerConfig": {
+      "dist": false,
+      "repoRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "optimizerCacheKey": "♻",
+      "themeTags": [
+        "v7dark",
+        "v7light",
+        "v8dark",
+        "v8light",
+        "v9dark",
+        "v9light"
+      ],
+      "browserslistEnv": "dev"
+    }
+  },
+  "cacheKey": {
+    "spec": {
+      "type": "plugin",
+      "id": "tileMap",
+      "publicDirNames": [
+        "public"
+      ],
+      "contextDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map",
+      "sourceRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "outputDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/target/public",
+      "manifestPath": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/opensearch_dashboards.json"
+    },
+    "hashes": {
+      "/home/ubuntu/wazuh-dashboard-cert/node_modules/d3/package.json": "q0eS5mT2JukOAVYLG44I2+6rG5A=",
+      "/home/ubuntu/wazuh-dashboard-cert/node_modules/node-libs-browser/node_modules/events/package.json": "iq4S84KjS8Hdaq5Z0/J+QJgUjjU=",
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js": "v4pUsX5OhpV1dk0v/DZCO9S62cg=",
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js": "b41/d6aG8zpS7djMBr4SlOXnVgg=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/opensearch_dashboards.json": "jaTnrsvpDvU4yQgBeZY92t8P/Cs=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/components/tile_map_options.tsx": "wcK55CUOwriourh8Doc3JmvoN1g=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/css_filters.js": "s8sONCxK9b7tPuxGsgbqnQywv14=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/geohash_layer.js": "PSTS4oZwJuFpe/y/nNYRGBTAwcY=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/index.ts": "B2ryrFDa9hkNJqLVQkP7K0soKqs=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/geohash_grid.js": "3IxVLttigaZBiodKN1KIzSIX2tA=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/heatmap.js": "oI5qJ/TOBKmy2c/QX/2cPazc7fs=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/scaled_circles.js": "JQAgXqb5nfDld6s9Yteb80+Pekk=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/shaded_circles.js": "8nQxav+4fWIZnnc/U6w31zfJ354=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/plugin.ts": "eQjs5VTisMk4A98UXlCfQodjWQI=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/services.ts": "3wK0NZ/Qmi57c8/gJ2vwj1RNips=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_fn.js": "E22zeiNexXzubdcDoZydxMJ0QmA=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_type.js": "pVHT9SlzQ1bbedDHQbofMuaBbpU=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_visualization.js": "56rPynAKcns0Urll0yaDl5AJctI=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tooltip_formatter.js": "QoVrGhyNWqVQK5hanXQh5NCuDd0="
+    }
+  },
+  "moduleCount": 18,
+  "workUnits": 19,
+  "files": [
+    "/home/ubuntu/wazuh-dashboard-cert/node_modules/d3/package.json",
+    "/home/ubuntu/wazuh-dashboard-cert/node_modules/node-libs-browser/node_modules/events/package.json",
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/opensearch_dashboards.json",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/components/tile_map_options.tsx",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/css_filters.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/geohash_layer.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/geohash_grid.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/heatmap.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/scaled_circles.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/markers/shaded_circles.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/plugin.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/services.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_fn.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_type.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tile_map_visualization.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/tile_map/public/tooltip_formatter.js"
+  ]
+}

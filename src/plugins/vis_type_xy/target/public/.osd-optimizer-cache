@@ -1,0 +1,52 @@
+{
+  "bundleRefExportIds": [],
+  "optimizerCacheKey": {
+    "lastCommit": "bc90b6a50a0989323442aba09ffd2ff270d5340f",
+    "bootstrap": "# this is only human readable for debugging, please don't try to parse this\n@opensearch/datemath:802e891ec9afa0bfc40a5c2109f523245b4ed004\n@osd/babel-preset:f14424fa133d133d8923d941a5f1773e4b624aa3\n@osd/config-schema:747161df0a0938b52f9193531de842d54b21d93f\n@osd/cross-platform:603e43c70dc6e3652698ec7204432ef7784b8e25\n@osd/dev-utils:ea1def231d960d14def8dd4d3427a45620d809d7\n@osd/expect:6cba2164a2c06247ac6e0b642afd65a26e62f89a\n@osd/i18n:412b81f338a04f80dbebfca5feed0d1b91eecd5c\n@osd/monaco:05d48fb281792b8535e5cc199425311ad7ab72ca\n@osd/optimizer:d757267e1102ed3c5fd98d4aa046b51ffff9bea1\n@osd/std:1e6fa591fc9ff8a4703496c4d660ba62d073e0e3\n@osd/ui-shared-deps:d6f1cddf22360c4c008a315fe28403cf61d40146\n@osd/utility-types:76e67a730a837263450c20faf348d29f4b0a8d26\n@osd/utils:c9a5292b3e1f9e214061e380f93cd824f5e7bd1e",
+    "deletedPaths": [],
+    "fileHashes": {},
+    "workerConfig": {
+      "dist": false,
+      "repoRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "optimizerCacheKey": "♻",
+      "themeTags": [
+        "v7dark",
+        "v7light",
+        "v8dark",
+        "v8light",
+        "v9dark",
+        "v9light"
+      ],
+      "browserslistEnv": "dev"
+    }
+  },
+  "cacheKey": {
+    "spec": {
+      "type": "plugin",
+      "id": "visTypeXy",
+      "publicDirNames": [
+        "public"
+      ],
+      "contextDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy",
+      "sourceRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "outputDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/target/public",
+      "manifestPath": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/opensearch_dashboards.json"
+    },
+    "hashes": {
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js": "v4pUsX5OhpV1dk0v/DZCO9S62cg=",
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js": "b41/d6aG8zpS7djMBr4SlOXnVgg=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/opensearch_dashboards.json": "XrVLxRNMz30EojSQBI9F4FsYThY=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/public/index.ts": "JQQDLFCMX2LRbe14SDkcyzDB8/k=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/public/plugin.ts": "NPAT4n9i/mjVJnKzCX9/VGjUNxM="
+    }
+  },
+  "moduleCount": 4,
+  "workUnits": 5,
+  "files": [
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/opensearch_dashboards.json",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/public/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/vis_type_xy/public/plugin.ts"
+  ]
+}

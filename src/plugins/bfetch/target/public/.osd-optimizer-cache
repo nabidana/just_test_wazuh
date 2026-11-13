@@ -1,0 +1,86 @@
+{
+  "bundleRefExportIds": [
+    "plugin/opensearchDashboardsUtils/public"
+  ],
+  "optimizerCacheKey": {
+    "lastCommit": "bc90b6a50a0989323442aba09ffd2ff270d5340f",
+    "bootstrap": "# this is only human readable for debugging, please don't try to parse this\n@opensearch/datemath:802e891ec9afa0bfc40a5c2109f523245b4ed004\n@osd/babel-preset:f14424fa133d133d8923d941a5f1773e4b624aa3\n@osd/config-schema:747161df0a0938b52f9193531de842d54b21d93f\n@osd/cross-platform:603e43c70dc6e3652698ec7204432ef7784b8e25\n@osd/dev-utils:ea1def231d960d14def8dd4d3427a45620d809d7\n@osd/expect:6cba2164a2c06247ac6e0b642afd65a26e62f89a\n@osd/i18n:412b81f338a04f80dbebfca5feed0d1b91eecd5c\n@osd/monaco:05d48fb281792b8535e5cc199425311ad7ab72ca\n@osd/optimizer:d757267e1102ed3c5fd98d4aa046b51ffff9bea1\n@osd/std:1e6fa591fc9ff8a4703496c4d660ba62d073e0e3\n@osd/ui-shared-deps:d6f1cddf22360c4c008a315fe28403cf61d40146\n@osd/utility-types:76e67a730a837263450c20faf348d29f4b0a8d26\n@osd/utils:c9a5292b3e1f9e214061e380f93cd824f5e7bd1e",
+    "deletedPaths": [],
+    "fileHashes": {},
+    "workerConfig": {
+      "dist": false,
+      "repoRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "optimizerCacheKey": "♻",
+      "themeTags": [
+        "v7dark",
+        "v7light",
+        "v8dark",
+        "v8light",
+        "v9dark",
+        "v9light"
+      ],
+      "browserslistEnv": "dev"
+    }
+  },
+  "cacheKey": {
+    "spec": {
+      "type": "plugin",
+      "id": "bfetch",
+      "publicDirNames": [
+        "public"
+      ],
+      "contextDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch",
+      "sourceRoot": "/home/ubuntu/wazuh-dashboard-cert",
+      "outputDir": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/target/public",
+      "manifestPath": "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/opensearch_dashboards.json"
+    },
+    "hashes": {
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js": "v4pUsX5OhpV1dk0v/DZCO9S62cg=",
+      "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js": "b41/d6aG8zpS7djMBr4SlOXnVgg=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/batch.ts": "2wutKpokiaQsFb1qH4OIRCBioGY=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/create_batched_function.ts": "2iIkgoHpU3cU/riuTMvIia6RJpA=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/index.ts": "3rN8JZqVDW1BCdaUh+lTLOKYTh0=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/item_buffer.ts": "sHh9Sfm4Jtc3llLyHh8r9KDaOb8=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/timed_item_buffer.ts": "9mfWpau9i9W3SWxO5ZRzBf0aDIM=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/index.ts": "uO5iZeFfOk/GbKhvcSxqySRE7Oc=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/streaming/index.ts": "0ire6aQCoERIgFipyogyqHVK0Ns=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/streaming/types.ts": "DNijSWoV/7HYpWLWZKQLFGb2Blo=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/index.ts": "QlUWSIweyquiYGOOc2+KWcz5Y8w=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/normalize_error.ts": "soTeKtONgrUD8SnmFglEDqlktk8=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/remove_leading_slash.ts": "sbc6F6h6BMT1S1m8UlsqIlHG5bs=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/opensearch_dashboards.json": "clARroVpEaJqjPhX4LWfscbh6v0=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/batching/create_streaming_batched_function.ts": "wU0DJnQkR1E0vMjIhNK7M4imPFc=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/index.ts": "Wva8cuUJ28G0U8VyRSfLVzOvG48=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/plugin.ts": "OldLwtSfVs96bR0GI5ejvHyPZ+s=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/fetch_streaming.ts": "dS+UmKSiFXEMhZ8+aq3FRAzCCvc=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/from_streaming_xhr.ts": "brIRhomnmWtKCtu/J4yRbFE4Se0=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/index.ts": "s2La6RtxvWKPtEwq+La7rnqOoOs=",
+      "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/split.ts": "H+Ynqt7AGvDJgrJojxGFJaSZN+0="
+    }
+  },
+  "moduleCount": 20,
+  "workUnits": 21,
+  "files": [
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-optimizer/target/worker/entry_point_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/packages/osd-ui-shared-deps/public_path_module_creator.js",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/batch.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/create_batched_function.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/item_buffer.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/buffer/timed_item_buffer.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/streaming/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/streaming/types.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/normalize_error.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/common/util/remove_leading_slash.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/opensearch_dashboards.json",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/batching/create_streaming_batched_function.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/plugin.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/fetch_streaming.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/from_streaming_xhr.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/index.ts",
+    "/home/ubuntu/wazuh-dashboard-cert/src/plugins/bfetch/public/streaming/split.ts"
+  ]
+}
