@@ -1,0 +1,66 @@
+import React from 'react';
+import { AlertsDataSourceRepository } from '../../data-source/pattern/alerts/alerts-data-source-repository';
+import { getPlugins } from '../../../../kibana-services';
+import { getDashboardPanels } from './dashboard_panels';
+import { ViewMode } from '../../../../../../../src/plugins/embeddable/public';
+import { useDataSource } from '../../data-source/hooks';
+import { PatternDataSource, tParsedIndexPattern } from '../../data-source';
+import { EuiPanel, EuiFlexGroup, EuiFlexItem, EuiSpacer } from '@elastic/eui';
+import { Typography } from '../../typography/typography';
+import { useTimeFilter } from '../../hooks';
+import { LoadingSearchbarProgress } from '../../loading-searchbar-progress/loading-searchbar-progress';
+import { EventsCountDataSource } from '../../data-source/pattern/alerts/events-count';
+
+const plugins = getPlugins();
+const DashboardByRenderer = plugins.dashboard.DashboardContainerByValueRenderer;
+
+export const EventsCount = () => {
+  const {
+    dataSource,
+    fetchFilters,
+    isLoading: isDataSourceLoading,
+  } = useDataSource<tParsedIndexPattern, PatternDataSource>({
+    DataSource: EventsCountDataSource,
+    repository: new AlertsDataSourceRepository(),
+  });
+
+  const { timeFilter } = useTimeFilter();
+
+  return (
+    <EuiPanel paddingSize='m'>
+      <EuiFlexGroup gutterSize='none'>
+        <EuiFlexItem grow={false}>
+          <Typography level='section'>이벤트 발생 추이</Typography>
+        </EuiFlexItem>
+      </EuiFlexGroup>
+      <EuiSpacer size='m' />
+      {!isDataSourceLoading && dataSource ? (
+        <DashboardByRenderer
+          input={{
+            viewMode: ViewMode.VIEW,
+            panels: getDashboardPanels(dataSource?.id),
+            isFullScreenMode: false,
+            filters: fetchFilters ?? [],
+            useMargins: true,
+            id: 'agent-events-count-evolution',
+            timeRange: {
+              from: timeFilter.from,
+              to: timeFilter.to,
+            },
+            title: '이벤트 발생 추이',
+            description: '이벤트 발생 추이 대시보드',
+            refreshConfig: {
+              pause: false,
+              value: 15,
+            },
+            hidePanelTitles: true,
+            // GS 인증용: 패널 우측 상단 "···"(Options) 메뉴 삭제
+            hidePanelActions: true,
+          }}
+        />
+      ) : (
+        <LoadingSearchbarProgress />
+      )}
+    </EuiPanel>
+  );
+};
